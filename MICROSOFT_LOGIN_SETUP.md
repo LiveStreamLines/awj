@@ -11,11 +11,15 @@ The application has been updated to use **Microsoft login only**. All email/pass
 - ✅ **Secure authentication** using OAuth 2.0 with PKCE
 - ✅ **Clean, modern interface** with Microsoft branding
 
-## Azure AD App Registration Setup
+## 🔧 Fixing the MSAL_INSTANCE Error
+
+The error you're seeing (`NullInjectorError: No provider for InjectionToken MSAL_INSTANCE!`) occurs because the Azure AD configuration is not properly set up. Here's how to fix it:
+
+### **Step 1: Set Up Azure AD App Registration**
 
 To complete the Microsoft login integration, you need to set up an Azure AD app registration:
 
-### 1. Create Azure AD App Registration
+### **Step 2: Create Azure AD App Registration**
 
 1. Go to [Azure Portal](https://portal.azure.com)
 2. Navigate to **Azure Active Directory** > **App registrations**
@@ -23,11 +27,11 @@ To complete the Microsoft login integration, you need to set up an Azure AD app 
 4. Fill in the details:
    - **Name**: `AHC Watch Platform`
    - **Supported account types**: Choose based on your organization needs
-   - **Redirect URI**: 
+   - **Redirect URI**: `https://ahcwatch.awjholding.com` (for production) 
      - Type: `Single-page application (SPA)`
      - URI: `https://ahcwatch.awjholding.com`
 
-### 2. Configure Authentication
+### **Step 3: Configure Authentication**
 
 1. In your app registration, go to **Authentication**
 2. Under **Single-page application**, add:
@@ -36,14 +40,16 @@ To complete the Microsoft login integration, you need to set up an Azure AD app 
    - ✅ Access tokens
    - ✅ ID tokens
 
-### 3. Configure API Permissions
+### **Step 4: Configure API Permissions**
 
 1. Go to **API permissions**
 2. Add permissions:
    - **Microsoft Graph** > **User.Read** (Delegated)
 3. Click **Grant admin consent** if required
 
-### 4. Update Environment Configuration
+### **Step 5: Update Environment Configuration**
+
+**IMPORTANT**: This is the critical step that will fix the MSAL_INSTANCE error!
 
 Update the `src/environment/environments.ts` file with your Azure AD details:
 
@@ -55,7 +61,8 @@ export const environment = {
     auth: {
       clientId: 'YOUR_AZURE_AD_CLIENT_ID', // Replace with your Client ID
       authority: 'https://login.microsoftonline.com/YOUR_TENANT_ID', // Replace with your Tenant ID
-      redirectUri: 'https://ahcwatch.awjholding.com'
+      redirectUri: 'https://ahcwatch.awjholding.com',
+      postLogoutRedirectUri: 'https://ahcwatch.awjholding.com'
     },
     cache: {
       cacheLocation: 'sessionStorage',
@@ -68,7 +75,12 @@ export const environment = {
 };
 ```
 
-### 5. Get Required Information
+**Replace these values:**
+- `YOUR_AZURE_AD_CLIENT_ID`: Found in your app registration **Overview** page
+- `YOUR_TENANT_ID`: Found in your app registration **Overview** page  
+- `YOUR_API_CLIENT_ID`: Same as your client ID (for now)
+
+### **Step 6: Get Required Information**
 
 From your Azure AD app registration:
 
@@ -76,29 +88,53 @@ From your Azure AD app registration:
 2. **Tenant ID**: Found in **Overview** tab
 3. **API Client ID**: Same as Client ID for this setup
 
-### 6. Test the Integration
+### **Step 7: Test and Deploy**
 
-1. Build and deploy your application
-2. Navigate to `https://ahcwatch.awjholding.com`
-3. Click on the **Microsoft Login** tab
-4. Click **Sign in with Microsoft**
-5. Complete the Microsoft authentication flow
-6. You should be redirected to the developers page
+After updating the environment configuration:
+
+1. **Build the application**:
+   ```bash
+   npx ng build --configuration production
+   ```
+
+2. **Deploy to your server**:
+   ```bash
+   git add .
+   git commit -m "Add Microsoft-only authentication"
+   git push origin main
+   ```
+
+3. **On your server**:
+   ```bash
+   git pull origin main
+   npm install
+   ng build --prod
+   ```
+
+4. **Test the login flow**:
+   - Visit `https://ahcwatch.awjholding.com`
+   - Click "Sign in with Microsoft"
+   - Complete Microsoft authentication
+   - Verify redirect to developers page
+
+### **🎉 Success!**
+
+Once you complete these steps, the MSAL_INSTANCE error will be resolved and Microsoft login will work perfectly!
 
 ## Features Implemented
 
-✅ **Microsoft Authentication**: Users can sign in with their Microsoft accounts
+✅ **Microsoft-Only Authentication**: Clean, single login option with Microsoft
 ✅ **Automatic Redirect**: After successful login, users are redirected to the developers page
 ✅ **Role-based Access**: Microsoft users get Super Admin role with full access
-✅ **Legacy Support**: Original email/password login is still available
+✅ **Secure OAuth 2.0**: Uses PKCE for enhanced security
 ✅ **Responsive Design**: Microsoft login works on all devices
 
 ## User Experience
 
-- **Primary Login**: Microsoft login is now the first tab
+- **Single Login Option**: Clean, Microsoft-only authentication
 - **Seamless Flow**: After Microsoft authentication, users go directly to developers page
 - **Full Access**: Microsoft users have access to all developers, projects, and cameras
-- **Fallback Option**: Legacy email/password login remains available
+- **Modern UI**: Beautiful, professional login interface
 
 ## Security Notes
 
@@ -106,3 +142,4 @@ From your Azure AD app registration:
 - Tokens are stored securely in session storage
 - All API calls are authenticated with Microsoft tokens
 - Users are automatically logged out when Microsoft session expires
+- No legacy authentication vulnerabilities
