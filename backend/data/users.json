@@ -5,7 +5,7 @@
     "email": "test@example.com",
     "password": "test",
     "phone": "+1234567890",
-    "role": "admin",
+    "role": "Super Admin",
     "isActive": true,
     "phoneRequired": false,
     "status": "active",
