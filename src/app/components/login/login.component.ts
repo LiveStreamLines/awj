@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';  // Import FormsModule
 import { CommonModule } from '@angular/common';  // Import CommonModule for *ngIf
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { AuthService } from '../../services/auth.service';
 import { UserService } from '../../services/users.service';
 import { HeaderService } from '../../services/header.service';
@@ -12,7 +14,7 @@ import { Capacitor } from '@capacitor/core';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, CommonModule, MatTabsModule],  // Import FormsModule here
+  imports: [FormsModule, CommonModule, MatTabsModule, MatButtonModule, MatCardModule],  // Import FormsModule here
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
@@ -65,6 +67,19 @@ export class LoginComponent implements OnInit, AfterViewInit {
       if (viewParam === 'forgotPassword') {
         this.currentView = 'forgotPassword';
       }
+
+      // Handle Microsoft login redirect
+      this.authService.handleMicrosoftLogin().subscribe({
+        next: (isLoggedIn) => {
+          if (isLoggedIn) {
+            this.router.navigate(['/developers']); // Redirect to developers page
+            this.headerService.showHeaderAndSidenav = true;
+          }
+        },
+        error: (error) => {
+          console.error('Microsoft login error:', error);
+        }
+      });
     }
   
     private checkScreenSize() {
@@ -103,6 +118,12 @@ export class LoginComponent implements OnInit, AfterViewInit {
     this.loginError = null;
   }
 
+  // Microsoft Login
+  onMicrosoftLogin(): void {
+    this.authService.loginWithMicrosoft();
+  }
+
+  // Legacy login method (keeping for backward compatibility)
   onLogin(): void {
     this.loading = true;
     this.authService.login(this.email, this.password).subscribe({

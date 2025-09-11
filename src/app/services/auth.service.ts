@@ -4,6 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
+// import { MsalService } from '@azure/msal-angular';
+// import { AuthenticationResult } from '@azure/msal-browser';
 
 // Define a consistent interface for the backend login response
 interface AuthResponse {
@@ -65,7 +67,7 @@ export class AuthService {
   private accessibleCameras: string[] = [];
   private accessibleServices: string[] = [];
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient, private router: Router /*, private msalService: MsalService*/) {
     // Initialize from localStorage
     this.authToken = localStorage.getItem('authToken');
     this.userId = localStorage.getItem('userId');
@@ -91,6 +93,39 @@ export class AuthService {
     this.memoryRoleSubject.next(this.memoryRole);
   }
 
+  // Microsoft Login - TODO: Enable after deployment
+  loginWithMicrosoft(): void {
+    // this.msalService.loginRedirect({
+    //   scopes: ['user.read']
+    // });
+    console.log('Microsoft login temporarily disabled for deployment');
+  }
+
+  // Handle Microsoft login redirect - TODO: Enable after deployment
+  handleMicrosoftLogin(): Observable<boolean> {
+    return new Observable(observer => {
+      // this.msalService.handleRedirectObservable().subscribe({
+      //   next: (result: AuthenticationResult | null) => {
+      //     if (result) {
+      //       this.setMicrosoftUserData(result);
+      //       observer.next(true);
+      //       observer.complete();
+      //     } else {
+      //       observer.next(false);
+      //       observer.complete();
+      //     }
+      //   },
+      //   error: (error: any) => {
+      //     console.error('Microsoft login error:', error);
+      //     observer.error(error);
+      //   }
+      // });
+      observer.next(false);
+      observer.complete();
+    });
+  }
+
+  // Legacy login method (keeping for backward compatibility)
   login(email: string, password: string): Observable<AuthResponse> {
     return this.http.post<AuthResponse>(`${this.apiUrl}/auth/login`, { email, password }).pipe(
       tap((response) => {
@@ -119,7 +154,56 @@ export class AuthService {
     return this.http.post(`${this.apiUrl}/auth/reset-password`, { token, newPassword });
   }
 
+  // Set Microsoft user data - TODO: Enable after deployment
+  private setMicrosoftUserData(result: any): void {
+    // const account = this.msalService.instance.getActiveAccount();
+    // if (account) {
+    //   this.userId = account.localAccountId;
+    //   this.username = account.name || '';
+    //   this.useremail = account.username;
+    //   this.authToken = result.accessToken;
+    //   this.userRole = 'Super Admin'; // Default role for Microsoft users
+    //   this.canAddUser = 'true';
+    //   this.canGenerateVideoAndPics = 'true';
+    //   this.manual = 'false';
+    //   this.memoryRole = 'Super Admin';
+    //   this.inventoryRole = 'Super Admin';
+    //   this.accessibleDevelopers = ['all']; // Microsoft users have access to all developers
+    //   this.accessibleProjects = ['all'];
+    //   this.accessibleCameras = ['all'];
+    //   this.accessibleServices = ['all'];
+
+    //   // Save to localStorage
+    //   localStorage.setItem('userId', this.userId || '');
+    //   localStorage.setItem('username', this.username || '');
+    //   localStorage.setItem('useremail', this.useremail || '');
+    //   localStorage.setItem('authToken', this.authToken || '');
+    //   localStorage.setItem('userRole', this.userRole);
+    //   localStorage.setItem('accessibleDevelopers', JSON.stringify(this.accessibleDevelopers));
+    //   localStorage.setItem('accessibleProjects', JSON.stringify(this.accessibleProjects));
+    //   localStorage.setItem('accessibleCameras', JSON.stringify(this.accessibleCameras));
+    //   localStorage.setItem('accessibleServices', JSON.stringify(this.accessibleServices));
+    //   localStorage.setItem('canAddUser', this.canAddUser);
+    //   localStorage.setItem('canGenerateVideoAndPics', this.canGenerateVideoAndPics);
+    //   localStorage.setItem('manual', this.manual);
+    //   localStorage.setItem('memoryRole', this.memoryRole);
+    //   localStorage.setItem('inventoryRole', this.inventoryRole);
+
+    //   // Emit to subscribers
+    //   this.userRoleSubject.next(this.userRole);
+    //   this.canAddUserSubject.next(this.canAddUser === 'true');
+    //   this.inventoryRoleSubject.next(this.inventoryRole);
+    //   this.memoryRoleSubject.next(this.memoryRole);
+    // }
+  }
+
   logout(): void {
+    // Microsoft logout - TODO: Enable after deployment
+    // this.msalService.logoutRedirect({
+    //   postLogoutRedirectUri: 'https://ahcwatch.awjholding.com'
+    // });
+
+    // Clear local data
     this.authToken = null;
     this.userId = null;
     this.username = null;

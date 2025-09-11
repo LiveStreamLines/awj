@@ -1,15 +1,24 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { AuthService } from './auth.service';
+// import { MsalService } from '@azure/msal-angular';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router /*, private msalService: MsalService*/) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    if (!this.authService.isLoggedIn()) {
+    // Check Microsoft authentication first - TODO: Enable after deployment
+    // const msalAccount = this.msalService.instance.getActiveAccount();
+    // const isMsalLoggedIn = !!msalAccount;
+    const isMsalLoggedIn = false; // Temporarily disabled
+    
+    // Check legacy authentication
+    const isLegacyLoggedIn = this.authService.isLoggedIn();
+    
+    if (!isMsalLoggedIn && !isLegacyLoggedIn) {
       this.router.navigate(['/login']);
       return false;
     }
@@ -19,14 +28,17 @@ export class AuthGuard implements CanActivate {
     if (requiredRoles) {
       const userRole = this.authService.getUserRole();
       if (!userRole || !requiredRoles.includes(userRole)) {
-        // Role not authorized, redirect to home or unauthorized page
-        this.router.navigate(['/home']);
+        // Role not authorized, redirect to developers page for Microsoft users
+        if (isMsalLoggedIn) {
+          this.router.navigate(['/developers']);
+        } else {
+          this.router.navigate(['/home']);
+        }
         return false;
       }
     }
 
     return true;
-
   }
 
 

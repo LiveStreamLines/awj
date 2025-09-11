@@ -257,3 +257,64 @@ label {
     margin-top: 10px;
   }
 }
+
+/* Microsoft Login Styles */
+.microsoft-login-container {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+}
+
+.microsoft-login-card {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 30px;
+  text-align: center;
+  max-width: 350px;
+  width: 100%;
+}
+
+.microsoft-logo {
+  margin-bottom: 20px;
+}
+
+.microsoft-login-card h3 {
+  color: white;
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+}
+
+.microsoft-login-card p {
+  color: #ccc;
+  margin-bottom: 30px;
+  font-size: 0.9rem;
+}
+
+.microsoft-login-btn {
+  background: #0078d4 !important;
+  color: white !important;
+  border: none !important;
+  padding: 12px 24px !important;
+  border-radius: 5px !important;
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  transition: background-color 0.3s ease !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+}
+
+.microsoft-login-btn:hover {
+  background: #106ebe !important;
+}
+
+.microsoft-login-btn:disabled {
+  background: #666 !important;
+  cursor: not-allowed !important;
+}
