@@ -4,6 +4,8 @@
   import { FormsModule } from '@angular/forms';  // Import FormsModule
   import { MatCardModule } from '@angular/material/card';
   import { MatButtonModule } from '@angular/material/button';
+  import { MatIconModule } from '@angular/material/icon';
+  import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
   import { DeveloperService } from '../../services/developer.service';
   import { Developer } from '../../models//developer.model';
   import { AuthService } from '../../services/auth.service';
@@ -18,7 +20,7 @@ import { User } from '../../models/user.model';
   @Component({
     selector: 'app-home',
     standalone: true,
-    imports: [CommonModule, FormsModule, MatCardModule, MatButtonModule],  // Add the HeaderComponent to imports
+    imports: [CommonModule, FormsModule, MatCardModule, MatButtonModule, MatIconModule, MatProgressSpinnerModule],  // Add Material modules
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.scss']
   })

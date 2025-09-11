@@ -1,119 +1,354 @@
-/* Style the search input */
-input[type="text"] {
-  width: 150px;
-  padding: 10px 10px;
-  font-size: 0.5rem;
-  border: 2px solid #ccc;
-  border-radius: 25px;
-  outline: none;
-  transition: border-color 0.3s ease;
-  margin-bottom: 20px;
-}
+/* AHC Timelapse Home Component - White & Gold Theme */
 
-/* Input hover and focus states */
-input[type="text"]:focus {
-  border-color: #007bff;
-}
-
-/* General layout for the home component */
+/* Main Layout */
 .home-layout {
-  display: flex;
-  flex-direction: row;
-  height: 100%;
-}
-
-/* Content area next to the sidenav */
-.content {
-  flex-grow: 1;
-  padding: 16px;
-}
-
-/* Developers container styling using CSS Grid */
-.developers-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Flexible column layout */
-  gap: 16px;
-  justify-content: space-around; /* Center items with space */
-}
-
-/* Individual developer card styling */
-.developer-card {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 50%, #f8f9fa 100%);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  overflow-x: hidden;
   width: 100%;
-  background-color: rgba(50, 50, 50, 0.9); /* Dark gray background */
-  box-shadow: 0 2px 10px rgba(139, 6, 6, 0.2);
-  border-radius: 8px;
-  border: 1px solid rgb(111, 10, 10);
-  padding: 16px;
+}
+
+/* Welcome Section */
+.welcome-section {
+  background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+  padding: 40px 20px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.welcome-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.15) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.welcome-content {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.welcome-text h1 {
+  color: #333;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-text p {
+  color: #555;
+  font-size: 1.2rem;
+  margin: 0 0 30px 0;
+  font-weight: 500;
+}
+
+/* Search Container */
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 25px;
+  padding: 8px 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: 2px solid rgba(212, 175, 55, 0.3);
+  transition: all 0.3s ease;
+  min-width: 300px;
+}
+
+.search-box:focus-within {
+  border-color: #d4af37;
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
+  transform: translateY(-2px);
+}
+
+.search-icon {
+  color: #d4af37;
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+.search-input {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 1rem;
+  color: #333;
+  flex: 1;
+  padding: 8px 0;
+}
+
+.search-input::placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+/* Main Content */
+.content {
+  flex: 1;
+  padding: 40px 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+/* Loading Container */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  color: #d4af37;
+}
+
+.loading-container p {
+  margin-top: 20px;
+  font-size: 1.1rem;
+  color: #666;
+  font-weight: 500;
+}
+
+/* Developers Grid */
+.developers-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 30px;
+  justify-content: center;
+  margin-top: 20px;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Developer Cards */
+.developer-card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  border: 2px solid rgba(212, 175, 55, 0.1);
+  transition: all 0.3s ease;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+.developer-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #d4af37 0%, #f4d03f 100%);
 }
 
 .developer-card:hover {
-  transform: scale(1.02);
-  /* color:rgb(111, 10, 10); */
-  background-color: rgba(88, 86, 86, 0.9); /* Dark gray background */
-
-  box-shadow: 0 4px 20px rgba(192, 6, 6, 0.89);
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(212, 175, 55, 0.2);
+  border-color: rgba(212, 175, 55, 0.3);
 }
 
-/* Card title styling */
-.developer-card mat-card-title {
-  font-size: 1.5em;
-  margin-bottom: 15px;
+/* Card Header */
+.card-header {
+  padding: 20px 20px 10px 20px;
+  text-align: center;
 }
 
-/* Image within developer cards */
-.developer-card img {
-  width: 50%; /* Image does not take full width */
-  height: auto; /* Maintain aspect ratio */
-  max-height: 150px; /* Set max height for image */
-  object-fit: cover; /* Ensure image covers the area evenly */
-  border-radius: 8px;
-  margin: 0 auto 16px auto; /* Center the image */
+.card-header mat-card-title {
+  color: #333;
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.3;
 }
 
-/* Card content (description) styling */
-.developer-card mat-card-content {
-  font-size: 1em;
-   text-align: center;
-  flex-grow: 1; /* Make sure the content takes available space */
-  margin-bottom: 16px;
+/* Card Image Container */
+.card-image-container {
+  padding: 0 20px;
+  text-align: center;
 }
 
-/* Button styling */
-.developer-card mat-card-actions {
-  margin-top: auto; /* Push the button to the bottom */
+.developer-logo {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 12px;
+  background: #f8f9fa;
+  padding: 10px;
+  border: 2px solid rgba(212, 175, 55, 0.1);
+  transition: all 0.3s ease;
 }
 
-.developer-card mat-card-actions button {
-  width: 100%; /* Full width button */
-  background-color: #640808; /* Red button color */
-  color: white;
-  font-weight: bold;
+.developer-card:hover .developer-logo {
+  border-color: rgba(212, 175, 55, 0.3);
+  transform: scale(1.05);
 }
 
-.developer-card mat-card-actions button:hover {
-  background: radial-gradient(
-    rgba(215, 212, 212, 0.9) 20%,
-    transparent 15%
-  );
-  background-size: 3px 3px;
-  background-color: #7e0707; /* Darker red on hover */
+/* Card Description */
+.card-description {
+  padding: 15px 20px;
+  text-align: center;
 }
 
+.card-description p {
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0;
+  font-weight: 400;
+}
 
+/* Card Actions */
+.card-actions {
+  padding: 15px 20px 25px 20px;
+  display: flex;
+  justify-content: center;
+}
 
+.view-projects-btn {
+  background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%) !important;
+  color: #333 !important;
+  border: none !important;
+  border-radius: 25px !important;
+  padding: 12px 24px !important;
+  font-weight: 600 !important;
+  font-size: 0.9rem !important;
+  text-transform: none !important;
+  letter-spacing: 0.5px !important;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3) !important;
+  transition: all 0.3s ease !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
 
-/* Add some responsive behavior */
+.view-projects-btn:hover {
+  background: linear-gradient(135deg, #b8941f 0%, #d4af37 100%) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4) !important;
+}
+
+.view-projects-btn mat-icon {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+}
+
+/* No Results State */
+.no-results {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666;
+}
+
+.no-results-icon {
+  font-size: 4rem;
+  color: #d4af37;
+  margin-bottom: 20px;
+  opacity: 0.7;
+}
+
+.no-results h3 {
+  color: #333;
+  font-size: 1.5rem;
+  margin: 0 0 10px 0;
+  font-weight: 600;
+}
+
+.no-results p {
+  color: #666;
+  font-size: 1rem;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
-  .developers-container {
-    grid-template-columns: 1fr; /* Full-width for smaller screens */
+  .welcome-text h1 {
+    font-size: 2rem;
   }
-
-  input[type="text"] {
-    width: 90%;
+  
+  .welcome-text p {
+    font-size: 1rem;
+  }
+  
+  .search-box {
+    min-width: 250px;
+  }
+  
+  .developers-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .content {
+    padding: 20px 15px;
+  }
+  
+  .welcome-section {
+    padding: 30px 15px;
   }
 }
+
+@media (max-width: 480px) {
+  .welcome-text h1 {
+    font-size: 1.8rem;
+  }
+  
+  .search-box {
+    min-width: 200px;
+    padding: 6px 15px;
+  }
+  
+  .search-input {
+    font-size: 0.9rem;
+  }
+  
+  .developer-card {
+    margin: 0 10px;
+  }
+}
+
+/* Animation for cards */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.developer-card {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.developer-card:nth-child(1) { animation-delay: 0.1s; }
+.developer-card:nth-child(2) { animation-delay: 0.2s; }
+.developer-card:nth-child(3) { animation-delay: 0.3s; }
+.developer-card:nth-child(4) { animation-delay: 0.4s; }
+.developer-card:nth-child(5) { animation-delay: 0.5s; }
+.developer-card:nth-child(6) { animation-delay: 0.6s; }

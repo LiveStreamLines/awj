@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
       this.authService.handleMicrosoftLogin().subscribe({
         next: (isLoggedIn) => {
           if (isLoggedIn) {
-            this.router.navigate(['/developers']); // Redirect to developers page
+            this.router.navigate(['/home']); // Redirect to home page
             this.headerService.showHeaderAndSidenav = true;
           }
         },
@@ -43,5 +43,13 @@ export class LoginComponent implements OnInit {
   onMicrosoftLogin(): void {
     this.loginError = null;
     this.authService.loginWithMicrosoft();
+  }
+
+  // Temporary Login for Testing (remove after Azure AD setup)
+  onTemporaryLogin(): void {
+    this.loginError = null;
+    this.authService.temporaryLogin();
+    this.router.navigate(['/home']);
+    this.headerService.showHeaderAndSidenav = true;
   }
 }

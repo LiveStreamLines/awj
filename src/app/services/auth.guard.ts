@@ -10,11 +10,14 @@ export class AuthGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router, private msalService: MsalService) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    // Check Microsoft authentication only
+    // Check Microsoft authentication
     const msalAccount = this.msalService.instance.getActiveAccount();
     const isMsalLoggedIn = !!msalAccount;
     
-    if (!isMsalLoggedIn) {
+    // Check legacy authentication (for temporary login)
+    const isLegacyLoggedIn = this.authService.isLoggedIn();
+    
+    if (!isMsalLoggedIn && !isLegacyLoggedIn) {
       this.router.navigate(['/login']);
       return false;
     }
@@ -24,8 +27,8 @@ export class AuthGuard implements CanActivate {
     if (requiredRoles) {
       const userRole = this.authService.getUserRole();
       if (!userRole || !requiredRoles.includes(userRole)) {
-        // Role not authorized, redirect to developers page
-        this.router.navigate(['/developers']);
+        // Role not authorized, redirect to home page
+        this.router.navigate(['/home']);
         return false;
       }
     }

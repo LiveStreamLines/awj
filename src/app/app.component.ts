@@ -28,7 +28,7 @@ export class AppComponent {
   sidenavMode: 'side' | 'over' = 'side'; // Default to 'side' mode
   sidenavOpened: boolean = true; // Default to opened
 
-  title = 'LSLplatform';
+  title = 'AHC Timelapse';
 
   constructor(
     public headerService: HeaderService, 
@@ -46,8 +46,8 @@ export class AppComponent {
           this.authService.handleMicrosoftLogin().subscribe({
             next: (isLoggedIn) => {
               if (isLoggedIn) {
-                // Redirect to developers page after successful Microsoft login
-                window.location.href = '/developers';
+                // Redirect to home page after successful Microsoft login
+                window.location.href = '/home';
               }
             }
           });

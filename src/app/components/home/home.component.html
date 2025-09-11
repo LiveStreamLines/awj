@@ -1,24 +1,61 @@
-<input type="text" [(ngModel)]="searchTerm" (input)="filterDevelopers()" placeholder="Search developers" />
-
+<!-- AHC Timelapse Home Page -->
 <div class="home-layout">
-  <div class="content">
-    <div *ngIf="loading">
-      <p>Loading developers...</p>
+  <!-- Welcome Header Section -->
+  <div class="welcome-section">
+    <div class="welcome-content">
+      <div class="welcome-text">
+        <h1>Welcome to AHC Timelapse</h1>
+        <p>Your comprehensive timelapse monitoring platform</p>
+      </div>
+      <div class="search-container">
+        <div class="search-box">
+          <mat-icon class="search-icon">search</mat-icon>
+          <input 
+            type="text" 
+            [(ngModel)]="searchTerm" 
+            (input)="filterDevelopers()" 
+            placeholder="Search developers..." 
+            class="search-input"
+          />
+        </div>
+      </div>
+    </div>
   </div>
+
+  <!-- Main Content -->
+  <div class="content">
+    <!-- Loading State -->
+    <div *ngIf="loading" class="loading-container">
+      <mat-spinner diameter="50"></mat-spinner>
+      <p>Loading developers...</p>
+    </div>
     
-  <div *ngIf="!loading && filteredDevelopers.length > 0" class="developers-container">
+    <!-- Developers Grid -->
+    <div *ngIf="!loading && filteredDevelopers.length > 0" class="developers-container">
       <mat-card class="developer-card" *ngFor="let developer of filteredDevelopers" (click)="onDeveloperClick(developer)">
-        <mat-card-title>{{ developer.developerName }}</mat-card-title>
-        <img mat-card-image [src]="developer.logo" alt="{{ developer.developerName }}" />
-        <mat-card-content>{{ developer.description }}</mat-card-content>
-        <mat-card-actions>
-          <button mat-button>View Projects</button>
+        <div class="card-header">
+          <mat-card-title>{{ developer.developerName }}</mat-card-title>
+        </div>
+        <div class="card-image-container">
+          <img mat-card-image [src]="developer.logo" alt="{{ developer.developerName }}" class="developer-logo" />
+        </div>
+        <mat-card-content class="card-description">
+          <p>{{ developer.description }}</p>
+        </mat-card-content>
+        <mat-card-actions class="card-actions">
+          <button mat-raised-button class="view-projects-btn">
+            <mat-icon>visibility</mat-icon>
+            View Projects
+          </button>
         </mat-card-actions>
       </mat-card>
-  </div>
+    </div>
     
-  <div *ngIf="!loading && filteredDevelopers.length === 0">
-     <p>No developers found.</p>
+    <!-- No Results State -->
+    <div *ngIf="!loading && filteredDevelopers.length === 0" class="no-results">
+      <mat-icon class="no-results-icon">search_off</mat-icon>
+      <h3>No developers found</h3>
+      <p>Try adjusting your search terms or check back later.</p>
+    </div>
   </div>
- </div>
 </div>

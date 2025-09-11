@@ -15,8 +15,8 @@
 
         <!-- Welcome Text -->
         <div class="welcome-section">
-          <h1>Welcome to AHC Watch</h1>
-          <p>Your comprehensive monitoring and surveillance platform</p>
+          <h1>Welcome to AHC Timelapse</h1>
+          <p>Your comprehensive timelapse monitoring platform</p>
         </div>
 
         <!-- Microsoft Login -->
@@ -29,6 +29,11 @@
               <path d="M24 11.4H12.6V0H24V11.4Z" fill="#FFB900"/>
             </svg>
             <span>Sign in with Microsoft</span>
+          </button>
+
+          <!-- Temporary Login Button for Testing -->
+          <button mat-stroked-button (click)="onTemporaryLogin()" class="temporary-login-btn">
+            <span>🚀 Test Login (Temporary)</span>
           </button>
           
           <div *ngIf="loginError" class="error-message">

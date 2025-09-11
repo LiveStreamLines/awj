@@ -100,6 +100,49 @@ export class AuthService {
     });
   }
 
+  // Temporary login bypass for testing (remove after Azure AD setup)
+  temporaryLogin(): void {
+    // Simulate Microsoft user data
+    this.userId = 'temp-user-123';
+    this.username = 'Test User';
+    this.useremail = 'test@awjholding.com';
+    this.authToken = 'temp-token-123';
+    this.userRole = 'Super Admin';
+    this.canAddUser = 'true';
+    this.canGenerateVideoAndPics = 'true';
+    this.manual = 'false';
+    this.memoryRole = 'Super Admin';
+    this.inventoryRole = 'Super Admin';
+    this.accessibleDevelopers = ['all'];
+    this.accessibleProjects = ['all'];
+    this.accessibleCameras = ['all'];
+    this.accessibleServices = ['all'];
+
+    // Save to localStorage
+    localStorage.setItem('userId', this.userId);
+    localStorage.setItem('username', this.username);
+    localStorage.setItem('useremail', this.useremail);
+    localStorage.setItem('authToken', this.authToken);
+    localStorage.setItem('userRole', this.userRole);
+    localStorage.setItem('accessibleDevelopers', JSON.stringify(this.accessibleDevelopers));
+    localStorage.setItem('accessibleProjects', JSON.stringify(this.accessibleProjects));
+    localStorage.setItem('accessibleCameras', JSON.stringify(this.accessibleCameras));
+    localStorage.setItem('accessibleServices', JSON.stringify(this.accessibleServices));
+    localStorage.setItem('canAddUser', this.canAddUser);
+    localStorage.setItem('canGenerateVideoAndPics', this.canGenerateVideoAndPics);
+    localStorage.setItem('manual', this.manual);
+    localStorage.setItem('memoryRole', this.memoryRole);
+    localStorage.setItem('inventoryRole', this.inventoryRole);
+
+    // Emit to subscribers
+    this.userRoleSubject.next(this.userRole);
+    this.canAddUserSubject.next(this.canAddUser === 'true');
+    this.inventoryRoleSubject.next(this.inventoryRole);
+    this.memoryRoleSubject.next(this.memoryRole);
+
+    console.log('Temporary login successful - Test User logged in');
+  }
+
   // Handle Microsoft login redirect
   handleMicrosoftLogin(): Observable<boolean> {
     return new Observable(observer => {
