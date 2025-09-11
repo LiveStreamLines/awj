@@ -260,61 +260,80 @@ label {
 
 /* Microsoft Login Styles */
 .microsoft-login-container {
-  padding: 20px;
+  padding: 40px 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 300px;
+  min-height: 400px;
 }
 
 .microsoft-login-card {
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 10px;
-  padding: 30px;
+  border-radius: 15px;
+  padding: 40px;
   text-align: center;
-  max-width: 350px;
+  max-width: 400px;
   width: 100%;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 .microsoft-logo {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
-.microsoft-login-card h3 {
+.microsoft-login-card h2 {
   color: white;
-  margin-bottom: 10px;
-  font-size: 1.5rem;
+  margin-bottom: 15px;
+  font-size: 2rem;
+  font-weight: 300;
 }
 
 .microsoft-login-card p {
   color: #ccc;
-  margin-bottom: 30px;
-  font-size: 0.9rem;
+  margin-bottom: 40px;
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
 .microsoft-login-btn {
   background: #0078d4 !important;
   color: white !important;
   border: none !important;
-  padding: 12px 24px !important;
-  border-radius: 5px !important;
-  font-size: 1rem !important;
+  padding: 15px 30px !important;
+  border-radius: 8px !important;
+  font-size: 1.1rem !important;
   font-weight: 500 !important;
   cursor: pointer !important;
-  transition: background-color 0.3s ease !important;
+  transition: all 0.3s ease !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   width: 100% !important;
   margin: 0 auto !important;
+  box-shadow: 0 4px 15px rgba(0, 120, 212, 0.3);
 }
 
 .microsoft-login-btn:hover {
   background: #106ebe !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 120, 212, 0.4);
 }
 
 .microsoft-login-btn:disabled {
   background: #666 !important;
   cursor: not-allowed !important;
+  transform: none;
+  box-shadow: none;
+}
+
+.error-message {
+  color: #ff6b6b;
+  font-size: 0.9rem;
+  margin-top: 20px;
+  padding: 10px;
+  background: rgba(255, 107, 107, 0.1);
+  border-radius: 5px;
+  border: 1px solid rgba(255, 107, 107, 0.3);
 }
