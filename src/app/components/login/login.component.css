@@ -1,308 +1,96 @@
+/* AWJ Login Page - Modern Design */
+
 .login-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
   display: flex;
-  height: 100vh;
-  background-color: #333;
-  position: relative; /* Add this to ensure proper stacking */
-}
-
-.video-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.background-video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.video-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6); /* Semi-transparent overlay */
-}
-
-.login-card {
-  position: absolute;
-  height: auto;
-  max-width: 400px;
-  margin: 100px;
-  background: rgb(10, 10, 10, 0.6);
-  color: white;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 8px 16px rgba(88, 11, 11, 1);
-  border: 2px solid #333;
-  text-align: center;
-  z-index: 10;
-}
-
-.logo-container {
-  display: flex;
+  align-items: center;
   justify-content: center;
-}
-
-.logo {
-  max-width: 33%; /* One-third of the login card's width */
-  height: auto;
-  margin-bottom: 10px;
-}
-
-/* Form styling */
-.login-form {
-  margin-top: 10px;
-  width: 100%;
-}
-
-.form-group {
-  margin-bottom: 15px;
-  text-align: left;
-}
-
-label {
-  font-weight: bold;
-  font-size: 0.9rem;
-  color: white;
-}
-
-.login-title {
-  /* font-size: 1.5rem; Reduce font size to half of the original */
-  font-weight: bold;
-  margin: 0;
-}
-
-.form-control {
-  width: 90%;
-  padding: 5px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  /* font-size: 0.9rem; */
-  background: black;
-  color: white;
-  transition: border 0.3s ease;
-}
-
-.form-control:focus {
-  border-color: red;
-  outline: none;
-}
-
-/* Button styling */
-.btn-login {
-  width: 50%;
-  margin-top: 15px;
-  padding: 10px 0;
-  background: rgba(88, 11, 11, 1);
-  color: white;
-  border: none;
-  border-radius: 5px;
-  /* font-size: 2rem; */
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.btn-login:disabled {
-  background: #444;
-  cursor: not-allowed;
-}
-
-.btn-login:hover {
-  background: darkred;
-}
-
-.btn-back {
-  padding: 10px; 
-  background-color: black; 
-  border:1px solid gray; 
-  color:rgb(205, 81, 81)
-}
-
-.btn-back:hover {
-  background: darkred;
-  color: white;
-}
-
-/* Error message */
-.error-message {
-  color: red;
-  /* font-size: 0.85rem; */
-  margin-top: 10px;
-}
-
-/* Tab styles */
-.mat-tab-group {
-  margin-top: 20px;
-  background: black;
-  border-radius: 5px;
-  overflow: hidden;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.mat-tab-label {
-  color: #ccc;
-  font-weight: bold;
-}
-
-.mat-tab-label-active {
-  color: white;
-  background: red;
-  border-radius: 5px 5px 0 0;
-}
-
-.mat-tab-body-wrapper {
-  padding: 10px 0;
-}
-
-.mat-tab-body {
   padding: 20px;
-  color: white;
-  /* font-size: 0.9rem; */
-  background: black;
-  border-radius: 0 0 5px 5px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.country-select-container {
-  display: flex;
-  align-items: center;
-}
-
-.country-flag {
-  width: 20px;
-  height: 15px;
-  margin-right: 5px;
-}
-
-.helper-text {
-  font-size: 12px;
-}
-
-.helper-text {
-  color: #f0f0f0; /* Light color for better readability */
-  font-size: 12px;
-  font-weight: bold;
-}
-
-.error-message {
-  font-size: 1rem; /* Ensure error messages are readable */
-  margin-top: 15px;
-}
-
-
-@media (max-width: 768px) {
-  .login-page {
-    flex-direction: column;
-    background: #333; /* Ensure background color is visible */
-  }
-
-  .video-container,
-  .video-container video,
-  .video-overlay,
-  .background-video {
-    display: none !important;
-    width: 0 !important;
-    height: 0 !important;
-    opacity: 0 !important;
-    visibility: hidden !important;
-    position: absolute !important;
-    z-index: -1 !important;
-  }
-
-  .login-card {
-    position: relative;
-    margin: 20px auto;
-    max-width: 90%;
-    padding: 20px;
-    background: rgba(10, 10, 10, 0.9); /* Make background more opaque */
-  }
-
-  .form-control {
-    width: 100%; /* Full width for inputs on small screens */
-  }
-
-  .btn-login {
-    width: 100%; /* Full width buttons */
-  }
-
-  .btn-back {
-    width: 100%;
-    text-align: center;
-  }
-
-  .logo {
-    max-width: 50%; /* Slightly larger logo on small screens */
-  }
-}
-
-@media (max-width: 480px) {
-  .helper-text {
-    font-size: 10px; /* Reduce helper text size for very small screens */
-  }
-
-  .form-control {
-    width: 90%;
-    padding: 8px;
-    font-size: 0.8rem; /* Adjust input padding and font size */
-  }
-
-  .btn-login, .btn-back {
-    padding: 10px;
-    font-size: 0.9rem; /* Adjust button padding and font size */
-  }
-
-  .mat-tab-group {
-    margin-top: 10px;
-  }
-}
-
-/* Microsoft Login Styles */
-.microsoft-login-container {
-  padding: 40px 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 400px;
-}
-
-.microsoft-login-card {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 15px;
-  padding: 40px;
-  text-align: center;
-  max-width: 400px;
+.login-container {
   width: 100%;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
 }
 
-.microsoft-logo {
+/* Header with AWJ Full Logo */
+.login-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.awj-full-logo {
+  height: 60px;
+  width: auto;
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
+}
+
+/* Main Login Card */
+.login-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+  width: 100%;
+  max-width: 450px;
+}
+
+.login-content {
+  padding: 50px 40px;
+  text-align: center;
+}
+
+/* Logo Section */
+.logo-section {
   margin-bottom: 30px;
 }
 
-.microsoft-login-card h2 {
-  color: white;
-  margin-bottom: 15px;
-  font-size: 2rem;
-  font-weight: 300;
+.awj-logo {
+  height: 80px;
+  width: auto;
+  margin: 0 auto;
 }
 
-.microsoft-login-card p {
-  color: #ccc;
+/* Welcome Section */
+.welcome-section {
   margin-bottom: 40px;
-  font-size: 1rem;
+}
+
+.welcome-section h1 {
+  color: #1e3c72;
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin: 0 0 15px 0;
+  line-height: 1.2;
+}
+
+.welcome-section p {
+  color: #666;
+  font-size: 1.1rem;
+  margin: 0;
   line-height: 1.5;
+}
+
+/* Microsoft Login Section */
+.microsoft-login-section {
+  margin-bottom: 30px;
 }
 
 .microsoft-login-btn {
   background: #0078d4 !important;
   color: white !important;
   border: none !important;
-  padding: 15px 30px !important;
-  border-radius: 8px !important;
+  padding: 16px 32px !important;
+  border-radius: 12px !important;
   font-size: 1.1rem !important;
   font-weight: 500 !important;
   cursor: pointer !important;
@@ -312,28 +100,153 @@ label {
   justify-content: center !important;
   width: 100% !important;
   margin: 0 auto !important;
-  box-shadow: 0 4px 15px rgba(0, 120, 212, 0.3);
+  box-shadow: 0 8px 20px rgba(0, 120, 212, 0.3) !important;
+  text-transform: none !important;
+  letter-spacing: 0.5px !important;
 }
 
 .microsoft-login-btn:hover {
   background: #106ebe !important;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 120, 212, 0.4);
+  transform: translateY(-2px) !important;
+  box-shadow: 0 12px 25px rgba(0, 120, 212, 0.4) !important;
 }
 
-.microsoft-login-btn:disabled {
-  background: #666 !important;
-  cursor: not-allowed !important;
-  transform: none;
-  box-shadow: none;
+.microsoft-login-btn:active {
+  transform: translateY(0) !important;
 }
 
+.microsoft-icon {
+  margin-right: 12px !important;
+  flex-shrink: 0;
+}
+
+/* Error Message */
 .error-message {
-  color: #ff6b6b;
-  font-size: 0.9rem;
+  color: #d32f2f;
+  font-size: 0.95rem;
   margin-top: 20px;
-  padding: 10px;
-  background: rgba(255, 107, 107, 0.1);
-  border-radius: 5px;
-  border: 1px solid rgba(255, 107, 107, 0.3);
+  padding: 12px 16px;
+  background: rgba(211, 47, 47, 0.1);
+  border-radius: 8px;
+  border: 1px solid rgba(211, 47, 47, 0.2);
+  text-align: center;
+}
+
+/* Footer */
+.login-footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding-top: 20px;
+  margin-top: 20px;
+}
+
+.login-footer p {
+  color: #888;
+  font-size: 0.9rem;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .login-page {
+    padding: 15px;
+  }
+  
+  .login-container {
+    gap: 30px;
+  }
+  
+  .awj-full-logo {
+    height: 50px;
+  }
+  
+  .login-card {
+    max-width: 100%;
+    border-radius: 15px;
+  }
+  
+  .login-content {
+    padding: 40px 30px;
+  }
+  
+  .awj-logo {
+    height: 70px;
+  }
+  
+  .welcome-section h1 {
+    font-size: 1.8rem;
+  }
+  
+  .welcome-section p {
+    font-size: 1rem;
+  }
+  
+  .microsoft-login-btn {
+    padding: 14px 28px !important;
+    font-size: 1rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-content {
+    padding: 30px 20px;
+  }
+  
+  .welcome-section h1 {
+    font-size: 1.6rem;
+  }
+  
+  .awj-logo {
+    height: 60px;
+  }
+  
+  .awj-full-logo {
+    height: 45px;
+  }
+}
+
+/* Animation for smooth entrance */
+.login-card {
+  animation: slideInUp 0.6s ease-out;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hover effects for interactive elements */
+.microsoft-login-btn:focus {
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(0, 120, 212, 0.3) !important;
+}
+
+/* Loading state for button */
+.microsoft-login-btn:disabled {
+  background: #ccc !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Additional visual enhancements */
+.login-page::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.2) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: -1;
 }
