@@ -1,8 +1,15 @@
 const jwt = require('jsonwebtoken');
 const twilio = require('twilio');
-const client = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
 const userData = require('../models/userData'); // Import user data module
 const logger = require('../logger');
+
+// Initialize Twilio client only if environment variables are available
+let client = null;
+if (process.env.TWILIO_ACCOUNT_SID && process.env.TWILIO_AUTH_TOKEN) {
+  client = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
+} else {
+  logger.warn('Twilio credentials not found. OTP functionality will be disabled.');
+}
 
 // Generate and Send OTP
 exports.sendOtp = (req, res) => {
@@ -10,6 +17,12 @@ exports.sendOtp = (req, res) => {
 
   if (!phone) {
     return res.status(400).json({ error: 'Phone number is required' });
+  }
+
+  // Check if Twilio client is available
+  if (!client) {
+    logger.error('Twilio client not initialized. Missing environment variables.');
+    return res.status(503).json({ error: 'OTP service is not available. Please contact administrator.' });
   }
 
   const user = userData.findUserByPhone(phone);
@@ -35,6 +48,12 @@ exports.verifyOtp = (req, res) => {
 
   if (!phone || !otp) {
     return res.status(400).json({ error: 'Phone and OTP are required' });
+  }
+
+  // Check if Twilio client is available
+  if (!client) {
+    logger.error('Twilio client not initialized. Missing environment variables.');
+    return res.status(503).json({ error: 'OTP service is not available. Please contact administrator.' });
   }
 
   client.verify.v2.services(process.env.TWILIO_SERVICE_SID)
