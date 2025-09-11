@@ -36,6 +36,18 @@ app.use(bodyParser.json());
 app.use(express.json({ limit: '50mb' })); // Adjust the limit as needed
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
+// Health check endpoint
+app.get('/health', (req, res) => {
+  res.status(200).json({
+    status: 'OK',
+    timestamp: new Date().toISOString(),
+    uptime: process.uptime(),
+    environment: process.env.NODE_ENV || 'development',
+    version: '1.0.0',
+    message: 'API is running successfully'
+  });
+});
+
 // Middleware to serve static files for media
 app.use('/media/upload', express.static(process.env.MEDIA_PATH +'/upload'));
 app.use('/canvas_images', express.static(process.env.MEDIA_PATH +'/canvas_images'));
