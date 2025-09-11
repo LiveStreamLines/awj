@@ -7,7 +7,7 @@ class UserData extends DataModel {
 
      findUserByEmailAndPassword(email, password) {
         const data = this.readData();
-        return data.find(user => user.email.toLowerCase() === email.toLowerCase() && user.password === password);
+        return data.find(user => user.email && user.email.toLowerCase() === email.toLowerCase() && user.password === password);
     }
 
     findUserByPhone(phone) {
@@ -17,7 +17,7 @@ class UserData extends DataModel {
 
      getUserByEmail(email) {
         const data = this.readData();
-        return data.filter(item => item.email.toLowerCase() === email.toLowerCase());
+        return data.filter(item => item.email && item.email.toLowerCase() === email.toLowerCase());
     }
 
     getUserByToken(token) {

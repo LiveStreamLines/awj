@@ -10,11 +10,25 @@ const logger = require('../logger');
 
 function login(req, res) {
     const { email, password } = req.body;
+    
+    // Validate input
+    if (!email || !password) {
+        return res.status(400).json({ msg: 'Email and password are required' });
+    }
+    
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        return res.status(400).json({ msg: 'Invalid email format' });
+    }
+    
     logger.info("request: ", req.body);
-    const user = userData.findUserByEmailAndPassword(email,password);
-    logger.info("info: ", user);
-    const logintime = new Date().toISOString();
-    logger.info("login time: ", logintime);
+    
+    try {
+        const user = userData.findUserByEmailAndPassword(email, password);
+        logger.info("info: ", user);
+        const logintime = new Date().toISOString();
+        logger.info("login time: ", logintime);
     
     if (user) {
       // Check if user is active
@@ -49,6 +63,10 @@ function login(req, res) {
       });
     } else {
       res.status(401).json({ msg: 'Invalid credentials' });
+    }
+    } catch (error) {
+      logger.error('Login error:', error);
+      res.status(500).json({ msg: 'Internal server error during login' });
     }
 }
 
