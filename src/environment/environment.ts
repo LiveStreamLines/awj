@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
-  backend: 'http://localhost:3000',
+  backend: 'https://ahcwatch.awjholding.com/backend',
   proxy: 'http://localhost:3000',
   hik: 'http://localhost:3000',
   // Microsoft Azure AD Configuration
