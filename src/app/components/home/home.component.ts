@@ -1,7 +1,6 @@
   import { Component, OnInit } from '@angular/core';
   import { Router } from '@angular/router';
   import { CommonModule } from '@angular/common';  // Import CommonModule for ngFor and ngIf
-  import { FormsModule } from '@angular/forms';  // Import FormsModule
   import { MatCardModule } from '@angular/material/card';
   import { MatButtonModule } from '@angular/material/button';
   import { MatIconModule } from '@angular/material/icon';
@@ -20,7 +19,7 @@ import { User } from '../../models/user.model';
   @Component({
     selector: 'app-home',
     standalone: true,
-    imports: [CommonModule, FormsModule, MatCardModule, MatButtonModule, MatIconModule, MatProgressSpinnerModule],  // Add Material modules
+    imports: [CommonModule, MatCardModule, MatButtonModule, MatIconModule, MatProgressSpinnerModule],  // Add Material modules
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.scss']
   })
@@ -29,7 +28,6 @@ import { User } from '../../models/user.model';
     developers: Developer[] = [];
     loading: boolean = true;
     filteredDevelopers: Developer[] = [];  // To store filtered developers
-    searchTerm: string = '';  // This will be used for filtering developers
     userRole: string | null = null;
     accessibleDevelopers: string[] = [];
     logopath: string =  environment.backend;
@@ -113,22 +111,6 @@ import { User } from '../../models/user.model';
 
     }
 
-    // This function will filter developers based on the search term
-    filterDevelopers(): void {
-      if (this.searchTerm) {
-        this.filteredDevelopers = this.developers.filter(developer =>
-          developer.developerName.toLowerCase().includes(this.searchTerm.toLowerCase())
-        );
-      } else {
-        // Reset to the full filtered list based on role and accessible developers
-        this.filteredDevelopers =
-          this.userRole === 'Super Admin'
-            ? this.developers
-            : this.developers.filter((dev) =>
-                this.accessibleDevelopers.includes(dev._id)
-            );
-      }
-    }
 
     onDeveloperClick(developer: Developer): void {
       this.router.navigate(['/home', developer.developerTag]);  // Navigate to ProjectListComponent with developer ID
