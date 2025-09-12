@@ -1,8 +1,11 @@
+/* Project List Component - White & Gold Theme */
+
 /* General layout for the home component */
 .home-layout {
   display: flex;
   flex-direction: row;
   height: 100%;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 50%, #f8f9fa 100%);
 }
 
 /* Content area next to the sidenav */
@@ -14,8 +17,8 @@
 .projects-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Flexible column layout */
-  gap: 16px;
-  justify-content: space-around; /* Center items with space */
+  gap: 30px;
+  justify-content: center; /* Center items */
 }
 
 .project-card {
@@ -23,29 +26,41 @@
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
-  background-color: rgba(50, 50, 50, 0.9); /* Dark gray background */
-  box-shadow: 0 2px 10px rgba(139, 6, 6, 0.2);
-  border-radius: 8px;
-  border: 1px solid rgb(111, 10, 10);
-  padding: 16px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  border: 2px solid rgba(212, 175, 55, 0.1);
+  padding: 20px;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #d4af37 0%, #f4d03f 100%);
 }
 
 .project-card:hover {
-  transform: scale(1.02);
-  /* color:rgb(111, 10, 10); */
-  background-color: rgba(88, 86, 86, 0.9); /* Dark gray background */
-
-  box-shadow: 0 4px 20px rgba(192, 6, 6, 0.89);
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(212, 175, 55, 0.2);
+  border-color: rgba(212, 175, 55, 0.3);
 }
 
 /* Card title styling */
 .project-card mat-card-title {
-  font-size: 1.5em;
+  font-size: 1.4rem;
   margin-bottom: 8px;
-  color: #fff; /* White title */
-  /* text-align: center; Center the title */
+  color: #333;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.3;
 }
 
 .project-card img {
@@ -53,50 +68,76 @@
   height: auto; /* Maintain aspect ratio */
   max-height: 150px; /* Set max height for image */
   object-fit: cover; /* Ensure image covers the area evenly */
-  border-radius: 8px;
+  border-radius: 12px;
   margin: 0 auto 16px auto; /* Center the image */
+  background: #f8f9fa;
+  padding: 10px;
+  border: 2px solid rgba(212, 175, 55, 0.1);
+  transition: all 0.3s ease;
+}
+
+.project-card:hover img {
+  border-color: rgba(212, 175, 55, 0.3);
+  transform: scale(1.05);
 }
 
 /* Card content (description) styling */
 .project-card mat-card-content {
-  font-size: 1em;
-  color: #fff; /* White content text */
+  font-size: 0.95rem;
+  color: #666;
   text-align: center;
   flex-grow: 1; /* Make sure the content takes available space */
   margin-bottom: 16px;
+  line-height: 1.5;
+  font-weight: 400;
 }
 
 /* Button styling */
 .project-card mat-card-actions {
   margin-top: auto; /* Push the button to the bottom */
+  display: flex;
+  justify-content: center;
+  padding: 15px 0 0 0;
 }
 
 .project-card mat-card-actions button {
-  width: 100%; /* Full width button */
-  background-color: #640808; /* Red button color */
-  color: white;
-  font-weight: bold;
+  background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%) !important;
+  color: #333 !important;
+  border: none !important;
+  border-radius: 25px !important;
+  padding: 12px 24px !important;
+  font-weight: 600 !important;
+  font-size: 0.9rem !important;
+  text-transform: none !important;
+  letter-spacing: 0.5px !important;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3) !important;
+  transition: all 0.3s ease !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  width: auto !important;
 }
 
 .project-card mat-card-actions button:hover {
-  background: radial-gradient(
-    rgba(215, 212, 212, 0.9) 20%,
-    transparent 15%
-  );
-  background-size: 3px 3px;
-  background-color: #7e0707; /* Darker red on hover */
+  background: linear-gradient(135deg, #b8941f 0%, #d4af37 100%) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4) !important;
 }
 
 
 .blocked-badge {
-  color: #d9534f;
+  color: #d4af37;
   font-weight: bold;
   margin-left: 8px;
 }
 
 .project-card.blocked {
-  background-color: #300505;
-  border: 1px solid #ff4d4d;
+  background-color: #fff8e1;
+  border: 2px solid rgba(212, 175, 55, 0.3);
+}
+
+.project-card.blocked::before {
+  background: linear-gradient(90deg, #ff9800 0%, #ffc107 100%);
 }
 
 /* Add some responsive behavior */
@@ -108,16 +149,21 @@
 
 
 .back-button {
-  background-color: #590606;
-  color: white;
-  padding: 10px 20px;
+  background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+  color: #333;
+  padding: 12px 24px;
   border: none;
-  border-radius: 5px;
+  border-radius: 25px;
   cursor: pointer;
   margin-bottom: 20px;
-  font-size: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+  transition: all 0.3s ease;
 }
 
 .back-button:hover {
-  background-color: #d10b0b;
+  background: linear-gradient(135deg, #b8941f 0%, #d4af37 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
 }
