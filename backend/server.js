@@ -6,7 +6,6 @@ const bodyParser = require('body-parser');
 require('dotenv').config();
 
 
-const logoRoutes = require('./routes/logo');
 const authRoutes = require('./routes/auth');
 const developerRoutes = require('./routes/developers');
 const projectRoutes = require('./routes/projects');
@@ -52,9 +51,9 @@ app.get('/health', (req, res) => {
 app.use('/media/upload', express.static(process.env.MEDIA_PATH +'/upload'));
 app.use('/canvas_images', express.static(process.env.MEDIA_PATH +'/canvas_images'));
 app.use('/media/music', express.static(process.env.MEDIA_PATH+'/music'));
+app.use('/logos', express.static(process.env.MEDIA_PATH +'/logos'));
 
 // Use routes
-app.use('/logos', logoRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/developers', developerRoutes);
 app.use('/api/projects', projectRoutes);

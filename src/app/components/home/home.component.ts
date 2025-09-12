@@ -67,7 +67,7 @@ import { User } from '../../models/user.model';
         next: (data: Developer[]) => {
           this.developers = data.map(dev => ({
             ...dev,
-            logo: this.logopath + "/" + dev.logo
+            logo: this.logopath + "/logos/developer/" + dev.logo
           }));
           this.filteredDevelopers = this.developers;
           this.loading = false;
