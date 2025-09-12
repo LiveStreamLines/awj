@@ -18,6 +18,7 @@ function serveLogo(req, res) {
     console.log('Serving logo:', filePath);
     res.sendFile(filePath);
   } else {
+    console.log('Logo file not found:', filePath);
     res.status(404).json({ error: 'Logo file not found' });
   }
 };
