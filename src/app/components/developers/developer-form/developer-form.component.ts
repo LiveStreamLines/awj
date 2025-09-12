@@ -117,7 +117,7 @@ export class DeveloperFormComponent implements OnInit {
         swiftCode: developer.bankDetails?.swiftCode || ''
       }
     });
-    this.logoPreview = environment.backend + '/logos/developer/' + developer.logo; // Show the existing logo if editing
+    this.logoPreview = environment.backend + '/' + developer.logo; // Show the existing logo if editing
   }
 
   onLogoChange(event: Event): void {
