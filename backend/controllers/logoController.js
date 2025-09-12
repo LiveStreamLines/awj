@@ -15,6 +15,7 @@ function serveLogo(req, res) {
 
   // Check if the file exists and serve it
   if (fs.existsSync(filePath)) {
+    console.log('Serving logo:', filePath);
     res.sendFile(filePath);
   } else {
     res.status(404).json({ error: 'Logo file not found' });
