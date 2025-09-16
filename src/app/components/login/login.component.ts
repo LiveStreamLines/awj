@@ -46,6 +46,7 @@ export class LoginComponent implements OnInit {
   // Microsoft Login
   onMicrosoftLogin(): void {
     this.loginError = null;
+    console.log('User clicked Microsoft login button');
     this.authService.loginWithMicrosoft();
   }
 }

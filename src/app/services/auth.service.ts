@@ -95,6 +95,7 @@ export class AuthService {
 
   // Microsoft Login
   loginWithMicrosoft(): void {
+    console.log('Initiating Microsoft login redirect...');
     this.msalService.loginRedirect({
       scopes: ['user.read']
     });
