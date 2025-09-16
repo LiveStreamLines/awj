@@ -1,41 +1,54 @@
 /* Back button styling */
 
 .back-button {
-  background-color: #590606;
-  color: white;
+  background: linear-gradient(135deg, #FFD700, #FFA500);
+  color: #2c2c2c;
   padding: 10px 20px;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
   margin-bottom: 20px;
-  font-size: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+  transition: all 0.3s ease;
 }
 
 .back-button:hover {
-  background-color: #d10b0b;
+  background: linear-gradient(135deg, #FFA500, #FFD700);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
 }
 
 /* Toolbar styling */
 .camera-detail-toolbar {
-  background-color: #54090959;
-  color: white;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 215, 0, 0.1));
+  backdrop-filter: blur(10px);
+  color: #2c2c2c;
   display: flex;
   justify-content: space-around;
-  padding: 10px;
+  padding: 15px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 .camera-detail-toolbar button {
-  transition: background-color 0.3s ease;
-  color: white;
+  transition: all 0.3s ease;
+  color: #2c2c2c;
+  border-radius: 8px;
+  font-weight: 500;
 }
 
 .camera-detail-toolbar button.active {
-  background-color: #302c2c;
-  color: white;
+  background: linear-gradient(135deg, #FFD700, #FFA500);
+  color: #2c2c2c;
+  box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
 }
 
 .camera-detail-toolbar button:hover {
-  background-color: rgba(40, 37, 37, 1);
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 165, 0, 0.2));
+  transform: translateY(-1px);
 }
 
 /* .compare-toolbar {
@@ -56,14 +69,24 @@
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 18px;
-  color: white;
+  color: #2c2c2c;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 215, 0, 0.1));
+  padding: 20px;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  font-weight: 600;
 }
 
 .date-time-toggle {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   text-align: left;
   font-size: 14px;
-  color: white;
+  color: #2c2c2c;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(255, 215, 0, 0.05));
+  padding: 12px;
+  border-radius: 8px;
+  backdrop-filter: blur(5px);
 }
 
 .single {
@@ -73,24 +96,30 @@
   position: absolute;
   top: 10px;
   left: 10px;
-  background-color: rgba(0, 0, 0, 0.6);
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 215, 0, 0.1));
+  backdrop-filter: blur(10px);
+  color: #2c2c2c;
+  padding: 8px 12px;
+  border-radius: 8px;
   font-size: 14px;
+  font-weight: 600;
   z-index: 10;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .weather-label {
   position: absolute;
   top: 10px;
   right: 10px;
-  background-color: rgba(0, 0, 0, 0.6);
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 215, 0, 0.1));
+  backdrop-filter: blur(10px);
+  color: #2c2c2c;
+  padding: 8px 12px;
+  border-radius: 8px;
   font-size: 14px;
+  font-weight: 600;
   z-index: 10;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 
@@ -136,25 +165,36 @@ mat-icon {
 }
 
 .thumbnail-strip::-webkit-scrollbar-thumb {
-  background-color: #681111;  /* Customize the scrollbar color */
+  background: linear-gradient(135deg, #FFD700, #FFA500);  /* Gold gradient scrollbar */
   border-radius: 10px;
 }
 
 .thumbnail-strip::-webkit-scrollbar-track {
-  background-color: #f1f1f1;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
 }
 
 /* Style the share button for proper alignment */
 .share-button {
   display: flex;
   align-items: center; /* Align items vertically */
-  gap: 4px; /* Space between the icon and the text */
-  padding: 4px 8px; /* Add padding for better click area */
+  gap: 6px; /* Space between the icon and the text */
+  padding: 8px 16px; /* Add padding for better click area */
   font-size: 14px; /* Ensure consistent font size */
   text-transform: none; /* Prevent Material's default uppercase */
-  background-color: #470707;
-  color: white;
+  background: linear-gradient(135deg, #FFD700, #FFA500);
+  color: #2c2c2c;
   margin-right: 10px;
+  border-radius: 8px;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.share-button:hover {
+  background: linear-gradient(135deg, #FFA500, #FFD700);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
 }
 
 /* Optional: style the icon */
@@ -172,13 +212,17 @@ mat-icon {
 .thumbnail {
   position: relative;
   cursor: pointer;
-  border: 2px solid transparent;
-  transition: border-color 0.3s ease;
+  border: 3px solid transparent;
+  transition: all 0.3s ease;
   flex: 0 0 auto;  /* Prevent shrinking or growing */
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .thumbnail.selected {
-  border-color: #7a1111;  /* Highlight the selected thumbnail */
+  border-color: #FFD700;  /* Gold highlight for selected thumbnail */
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.5);
+  transform: scale(1.05);
 }
 
 /* Larger Thumbnail image styling */
@@ -187,11 +231,12 @@ mat-icon {
   height: 120px; /* Increased height */
   object-fit: cover;
   border-radius: 5px;
-  transition: transform 0.2s ease;
+  transition: all 0.3s ease;
 }
 
 .thumbnail-img:hover {
   transform: scale(1.05); /* Slightly enlarge on hover */
+  filter: brightness(1.1);
 }
 
 /* Adjusted Thumbnail date overlay */
@@ -200,10 +245,11 @@ mat-icon {
   bottom: 0;
   left: 0;
   width: 100%;
-  padding: 2px;  /* Smaller padding for a cleaner look */
-  background-color: rgba(0, 0, 0, 0.7); /* Black transparent background */
-  color: white;
-  font-size: 10px;  /* Reduced font size for date and time */
+  padding: 4px;  /* Better padding for readability */
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.9), rgba(255, 165, 0, 0.8)); /* Gold gradient background */
+  color: #2c2c2c; /* Dark text for better contrast */
+  font-size: 11px;  /* Slightly larger font size */
+  font-weight: 600;
   text-align: center;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
@@ -211,17 +257,19 @@ mat-icon {
 
 /* Centered text for camera and project */
 h2, p {
-  color: #fff;
+  color: #2c2c2c;
   text-align: center;
 }
 
 h2 {
   font-size: 1.8em;
   margin-bottom: 10px;
+  font-weight: 700;
 }
 
 p {
   font-size: 1.2em;
+  font-weight: 500;
 }
 
 /* Style for the container */
@@ -237,31 +285,33 @@ p {
 .form-field label {
   font-size: 14px;
   font-weight: bold;
-  color: #fcfcfc; /* Dark gray for text */
+  color: #2c2c2c; /* Dark text for better contrast */
 }
 
 /* Style for the date input */
 .native-date-picker {
-  padding: 6px 5px;
+  padding: 8px 12px;
   font-size: 14px;
-  /* border: 1px solid #ccc; Light gray border */
-  border-radius: 4px;
-  background-color: #433a3a; /* Subtle background color */
-  color: #fffefe; /* Text color */
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.9); /* Clean white background */
+  color: #2c2c2c; /* Dark text color */
   transition: all 0.3s ease; /* Smooth transitions for hover/focus */
-  border-bottom: 1px;
+  backdrop-filter: blur(5px);
 }
 
 /* Input hover effect */
 .native-date-picker:hover {
-  border-color: #a80e0e; /* Highlight border on hover */
+  border-color: #FFD700; /* Gold border on hover */
+  background-color: rgba(255, 255, 255, 1);
 }
 
 /* Input focus effect */
 .native-date-picker:focus {
-  border-color: #871010; /* Blue border for focus */
-  box-shadow: 0 0 5px rgba(255, 38, 0, 0.788); /* Glow effect */
+  border-color: #FFA500; /* Orange border for focus */
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.4); /* Gold glow effect */
   outline: none; /* Remove default outline */
+  background-color: rgba(255, 255, 255, 1);
 }
 
 /* Style for invalid input (optional, if validation is needed) */
@@ -285,10 +335,12 @@ p {
     right: 0;
     transform: translateY(-50%);
     pointer-events: none;
-    color: #eeeeee;
+    color: #2c2c2c;
     font-size: 19px;
-    background: #7f1515;
-    padding: 4px;
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    padding: 6px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(255, 215, 0, 0.3);
 }
 
 .material-icons {
