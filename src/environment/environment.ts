@@ -8,7 +8,7 @@ export const environment = {
     auth: {
       clientId: '888591c1-5f18-4343-bf7c-cd02b2154bac', // Your Azure AD app client ID
       authority: 'https://login.microsoftonline.com/9c8d0d3e-b6ba-4ef3-b023-37952c89fc65', // Your tenant ID
-      redirectUri: 'http://localhost:4200'
+      redirectUri: 'https://ahcwatch.awjholding.com'
     },
     cache: {
       cacheLocation: 'sessionStorage',
