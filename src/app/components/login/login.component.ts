@@ -24,14 +24,25 @@ export class LoginComponent implements OnInit {
     ngOnInit(): void {
       this.headerService.showHeaderAndSidenav = false;
 
+      // Check if already logged in
+      if (this.authService.isLoggedIn()) {
+        console.log('Already logged in, redirecting to home...');
+        this.router.navigate(['/home']);
+        this.headerService.showHeaderAndSidenav = true;
+        return;
+      }
+
       // Handle Microsoft login redirect
       this.authService.handleMicrosoftLogin().subscribe({
         next: (isLoggedIn) => {
           console.log('Microsoft login result:', isLoggedIn);
           if (isLoggedIn) {
             console.log('Redirecting to home page...');
-            this.router.navigate(['/home']); // Redirect to home page
-            this.headerService.showHeaderAndSidenav = true;
+            // Add a small delay to ensure MSAL state is properly set
+            setTimeout(() => {
+              this.router.navigate(['/home']); // Redirect to home page
+              this.headerService.showHeaderAndSidenav = true;
+            }, 100);
           } else {
             console.log('Microsoft login not successful, staying on login page');
           }
