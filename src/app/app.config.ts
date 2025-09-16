@@ -1,11 +1,11 @@
 import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
-import { provideHttpClient, withInterceptors } from '@angular/common/http';  // Import HttpClient
+import { provideHttpClient } from '@angular/common/http';  // Import HttpClient
 import { routes } from './app.routes';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { MsalService, MsalGuard, MsalInterceptor, MSAL_INSTANCE, MSAL_INTERCEPTOR_CONFIG } from '@azure/msal-angular';
+import { MsalService, MsalGuard, MsalBroadcastService, MsalInterceptor, MSAL_INSTANCE, MSAL_INTERCEPTOR_CONFIG } from '@azure/msal-angular';
 import { PublicClientApplication, InteractionType } from '@azure/msal-browser';
-import { environment } from '../environment/environments';
+import { environment } from '../environment/environment';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -15,6 +15,7 @@ export const appConfig: ApplicationConfig = {
     provideAnimationsAsync(),
     MsalService,
     MsalGuard,
+    MsalBroadcastService,
     {
       provide: MSAL_INSTANCE,
       useFactory: () => new PublicClientApplication({
@@ -29,6 +30,7 @@ export const appConfig: ApplicationConfig = {
         interactionType: InteractionType.Redirect,
         protectedResourceMap: environment.protectedResourceMap
       }
-    }
+    },
+    MsalInterceptor
   ]
 };
