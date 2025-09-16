@@ -14,10 +14,15 @@ export class AuthGuard implements CanActivate {
     const msalAccount = this.msalService.instance.getActiveAccount();
     const isMsalLoggedIn = !!msalAccount;
     
+    console.log('AuthGuard check - MSAL account:', msalAccount);
+    console.log('AuthGuard check - isMsalLoggedIn:', isMsalLoggedIn);
+    
     // Check legacy authentication (for temporary login)
     const isLegacyLoggedIn = this.authService.isLoggedIn();
+    console.log('AuthGuard check - isLegacyLoggedIn:', isLegacyLoggedIn);
     
     if (!isMsalLoggedIn && !isLegacyLoggedIn) {
+      console.log('AuthGuard - Not logged in, redirecting to login');
       this.router.navigate(['/login']);
       return false;
     }

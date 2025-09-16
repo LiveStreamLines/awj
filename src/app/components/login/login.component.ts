@@ -27,9 +27,13 @@ export class LoginComponent implements OnInit {
       // Handle Microsoft login redirect
       this.authService.handleMicrosoftLogin().subscribe({
         next: (isLoggedIn) => {
+          console.log('Microsoft login result:', isLoggedIn);
           if (isLoggedIn) {
+            console.log('Redirecting to home page...');
             this.router.navigate(['/home']); // Redirect to home page
             this.headerService.showHeaderAndSidenav = true;
+          } else {
+            console.log('Microsoft login not successful, staying on login page');
           }
         },
         error: (error) => {

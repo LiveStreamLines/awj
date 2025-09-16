@@ -104,15 +104,28 @@ export class AuthService {
   // Handle Microsoft login redirect
   handleMicrosoftLogin(): Observable<boolean> {
     return new Observable(observer => {
+      console.log('Starting Microsoft login handling...');
       this.msalService.handleRedirectObservable().subscribe({
         next: (result: AuthenticationResult | null) => {
+          console.log('MSAL redirect result:', result);
           if (result) {
+            console.log('Microsoft login successful, setting user data...');
             this.setMicrosoftUserData(result);
             observer.next(true);
             observer.complete();
           } else {
-            observer.next(false);
-            observer.complete();
+            console.log('No Microsoft login result, checking if already logged in...');
+            // Check if user is already logged in
+            const account = this.msalService.instance.getActiveAccount();
+            if (account) {
+              console.log('User already logged in with account:', account);
+              observer.next(true);
+              observer.complete();
+            } else {
+              console.log('No active account found');
+              observer.next(false);
+              observer.complete();
+            }
           }
         },
         error: (error: any) => {
