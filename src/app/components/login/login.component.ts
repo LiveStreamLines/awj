@@ -44,12 +44,4 @@ export class LoginComponent implements OnInit {
     this.loginError = null;
     this.authService.loginWithMicrosoft();
   }
-
-  // Temporary Login for Testing (remove after Azure AD setup)
-  onTemporaryLogin(): void {
-    this.loginError = null;
-    this.authService.temporaryLogin();
-    this.router.navigate(['/home']);
-    this.headerService.showHeaderAndSidenav = true;
-  }
 }

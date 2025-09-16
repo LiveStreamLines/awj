@@ -30,11 +30,6 @@
             </svg>
             <span>Sign in with Microsoft</span>
           </button>
-
-          <!-- Temporary Login Button for Testing -->
-          <button mat-stroked-button (click)="onTemporaryLogin()" class="temporary-login-btn">
-            <span>🚀 Test Login (Temporary)</span>
-          </button>
           
           <div *ngIf="loginError" class="error-message">
             {{ loginError }}

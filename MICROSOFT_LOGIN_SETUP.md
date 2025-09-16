@@ -2,7 +2,7 @@
 
 ## ✅ Microsoft Login Implementation Complete
 
-The AHC Timelapse application has been updated to use **Microsoft login only**. All email/password and phone/OTP login functionality has been removed.
+The AHC Timelapse application has been updated to use **Microsoft login only**. All email/password, phone/OTP, and temporary test login functionality has been removed.
 
 ### What's Been Implemented:
 - ✅ **Microsoft-only login page** with beautiful UI
