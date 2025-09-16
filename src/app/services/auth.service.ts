@@ -86,11 +86,26 @@ export class AuthService {
     this.accessibleCameras = JSON.parse(localStorage.getItem('accessibleCameras') || '[]');
     this.accessibleServices = JSON.parse(localStorage.getItem('accessibleServices') || '[]');
 
+    // Initialize Microsoft authentication state
+    this.initializeMicrosoftAuth();
+
     // Notify subscribers
     this.userRoleSubject.next(this.userRole);
     this.canAddUserSubject.next(this.canAddUser === 'true');
     this.inventoryRoleSubject.next(this.inventoryRole);
     this.memoryRoleSubject.next(this.memoryRole);
+  }
+
+  // Initialize Microsoft authentication state
+  private initializeMicrosoftAuth(): void {
+    console.log('Initializing Microsoft authentication...');
+    const account = this.msalService.instance.getActiveAccount();
+    if (account) {
+      console.log('Found active Microsoft account:', account);
+      this.msalService.instance.setActiveAccount(account);
+    } else {
+      console.log('No active Microsoft account found');
+    }
   }
 
   // Microsoft Login
@@ -141,8 +156,15 @@ export class AuthService {
 
   // Set Microsoft user data
   private setMicrosoftUserData(result: AuthenticationResult): void {
+    console.log('Setting Microsoft user data...');
     const account = this.msalService.instance.getActiveAccount();
+    console.log('Active account:', account);
+    
     if (account) {
+      // Set the account as active
+      this.msalService.instance.setActiveAccount(account);
+      console.log('Account set as active');
+      
       this.userId = account.localAccountId;
       this.username = account.name || '';
       this.useremail = account.username;
@@ -179,6 +201,10 @@ export class AuthService {
       this.canAddUserSubject.next(this.canAddUser === 'true');
       this.inventoryRoleSubject.next(this.inventoryRole);
       this.memoryRoleSubject.next(this.memoryRole);
+      
+      console.log('Microsoft user data set successfully');
+    } else {
+      console.error('No active account found when setting user data');
     }
   }
 
@@ -320,6 +346,17 @@ export class AuthService {
   }
 
   isLoggedIn(): boolean {
-    return !!this.authToken || !!localStorage.getItem('authToken');
+    // Check Microsoft authentication
+    const msalAccount = this.msalService.instance.getActiveAccount();
+    const isMsalLoggedIn = !!msalAccount;
+    
+    // Check legacy authentication
+    const isLegacyLoggedIn = !!this.authToken || !!localStorage.getItem('authToken');
+    
+    console.log('isLoggedIn check - MSAL account:', msalAccount);
+    console.log('isLoggedIn check - isMsalLoggedIn:', isMsalLoggedIn);
+    console.log('isLoggedIn check - isLegacyLoggedIn:', isLegacyLoggedIn);
+    
+    return isMsalLoggedIn || isLegacyLoggedIn;
   }
 }
