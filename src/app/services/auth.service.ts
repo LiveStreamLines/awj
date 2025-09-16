@@ -104,7 +104,16 @@ export class AuthService {
       console.log('Found active Microsoft account:', account);
       this.msalService.instance.setActiveAccount(account);
     } else {
-      console.log('No active Microsoft account found');
+      // Check if there are any accounts available
+      const accounts = this.msalService.instance.getAllAccounts();
+      console.log('All MSAL accounts:', accounts);
+      if (accounts.length > 0) {
+        console.log('Setting first account as active:', accounts[0]);
+        this.msalService.instance.setActiveAccount(accounts[0]);
+        this.setMicrosoftUserDataFromAccount(accounts[0]);
+      } else {
+        console.log('No Microsoft accounts found');
+      }
     }
   }
 
@@ -132,13 +141,19 @@ export class AuthService {
           } else {
             console.log('No Microsoft login result, checking if already logged in...');
             // Check if user is already logged in
-            const account = this.msalService.instance.getActiveAccount();
-            if (account) {
-              console.log('User already logged in with account:', account);
+            const accounts = this.msalService.instance.getAllAccounts();
+            console.log('All MSAL accounts:', accounts);
+            
+            if (accounts.length > 0) {
+              // Set the first account as active
+              const account = accounts[0];
+              console.log('Setting account as active:', account);
+              this.msalService.instance.setActiveAccount(account);
+              this.setMicrosoftUserDataFromAccount(account);
               observer.next(true);
               observer.complete();
             } else {
-              console.log('No active account found');
+              console.log('No accounts found');
               observer.next(false);
               observer.complete();
             }
@@ -205,6 +220,54 @@ export class AuthService {
       console.log('Microsoft user data set successfully');
     } else {
       console.error('No active account found when setting user data');
+    }
+  }
+
+  // Set Microsoft user data from account (without AuthenticationResult)
+  private setMicrosoftUserDataFromAccount(account: any): void {
+    console.log('Setting Microsoft user data from account...');
+    
+    if (account) {
+      this.userId = account.localAccountId;
+      this.username = account.name || '';
+      this.useremail = account.username;
+      this.authToken = 'microsoft-token'; // Placeholder token
+      this.userRole = 'Super Admin'; // Default role for Microsoft users
+      this.canAddUser = 'true';
+      this.canGenerateVideoAndPics = 'true';
+      this.manual = 'false';
+      this.memoryRole = 'Super Admin';
+      this.inventoryRole = 'Super Admin';
+      this.accessibleDevelopers = ['all']; // Microsoft users have access to all developers
+      this.accessibleProjects = ['all'];
+      this.accessibleCameras = ['all'];
+      this.accessibleServices = ['all'];
+
+      // Save to localStorage
+      localStorage.setItem('userId', this.userId || '');
+      localStorage.setItem('username', this.username || '');
+      localStorage.setItem('useremail', this.useremail || '');
+      localStorage.setItem('authToken', this.authToken || '');
+      localStorage.setItem('userRole', this.userRole);
+      localStorage.setItem('accessibleDevelopers', JSON.stringify(this.accessibleDevelopers));
+      localStorage.setItem('accessibleProjects', JSON.stringify(this.accessibleProjects));
+      localStorage.setItem('accessibleCameras', JSON.stringify(this.accessibleCameras));
+      localStorage.setItem('accessibleServices', JSON.stringify(this.accessibleServices));
+      localStorage.setItem('canAddUser', this.canAddUser);
+      localStorage.setItem('canGenerateVideoAndPics', this.canGenerateVideoAndPics);
+      localStorage.setItem('manual', this.manual);
+      localStorage.setItem('memoryRole', this.memoryRole);
+      localStorage.setItem('inventoryRole', this.inventoryRole);
+
+      // Emit to subscribers
+      this.userRoleSubject.next(this.userRole);
+      this.canAddUserSubject.next(this.canAddUser === 'true');
+      this.inventoryRoleSubject.next(this.inventoryRole);
+      this.memoryRoleSubject.next(this.memoryRole);
+      
+      console.log('Microsoft user data set successfully from account');
+    } else {
+      console.error('No account provided when setting user data');
     }
   }
 
