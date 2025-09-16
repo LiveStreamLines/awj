@@ -6,8 +6,8 @@ export const environment = {
   // Microsoft Azure AD Configuration
   msalConfig: {
     auth: {
-      clientId: 'YOUR_AZURE_AD_CLIENT_ID', // Replace with your Azure AD app client ID
-      authority: 'https://login.microsoftonline.com/YOUR_TENANT_ID', // Replace with your tenant ID
+      clientId: '888591c1-5f18-4343-bf7c-cd02b2154bac', // Your Azure AD app client ID
+      authority: 'https://login.microsoftonline.com/9c8d0d3e-b6ba-4ef3-b023-37952c89fc65', // Your tenant ID
       redirectUri: 'https://ahcwatch.awjholding.com',
       postLogoutRedirectUri: 'https://ahcwatch.awjholding.com'
     },
@@ -41,6 +41,6 @@ export const environment = {
   },
   // API endpoints that require authentication
   protectedResourceMap: new Map([
-    ['https://ahcwatch.awjholding.com/backend/api', ['api://YOUR_API_CLIENT_ID/access_as_user']]
+    ['https://ahcwatch.awjholding.com/backend/api', ['api://888591c1-5f18-4343-bf7c-cd02b2154bac/access_as_user']]
   ])
 };
