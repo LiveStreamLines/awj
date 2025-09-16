@@ -12,7 +12,6 @@ export class AuthGuard implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     // Wait for MSAL to initialize
     if (!this.msalService.instance) {
-      console.log('AuthGuard - MSAL not initialized, redirecting to login');
       this.router.navigate(['/login']);
       return false;
     }
@@ -21,23 +20,15 @@ export class AuthGuard implements CanActivate {
     const msalAccount = this.msalService.instance.getActiveAccount();
     const isMsalLoggedIn = !!msalAccount;
     
-    console.log('AuthGuard check - MSAL account:', msalAccount);
-    console.log('AuthGuard check - isMsalLoggedIn:', isMsalLoggedIn);
-    console.log('AuthGuard check - Route:', route.routeConfig?.path);
-    console.log('AuthGuard check - State URL:', state.url);
-    
     // Check legacy authentication (for temporary login)
     const isLegacyLoggedIn = this.authService.isLoggedIn();
-    console.log('AuthGuard check - isLegacyLoggedIn:', isLegacyLoggedIn);
     
     // If trying to access login page, allow it
     if (state.url === '/login') {
-      console.log('AuthGuard - Allowing access to login page');
       return true;
     }
     
     if (!isMsalLoggedIn && !isLegacyLoggedIn) {
-      console.log('AuthGuard - Not logged in, redirecting to login');
       this.router.navigate(['/login']);
       return false;
     }

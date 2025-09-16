@@ -26,7 +26,6 @@ export class LoginComponent implements OnInit {
 
       // Check if already logged in
       if (this.authService.isLoggedIn()) {
-        console.log('Already logged in, redirecting to home...');
         this.router.navigate(['/home']);
         this.headerService.showHeaderAndSidenav = true;
         return;
@@ -35,16 +34,12 @@ export class LoginComponent implements OnInit {
       // Handle Microsoft login redirect
       this.authService.handleMicrosoftLogin().subscribe({
         next: (isLoggedIn) => {
-          console.log('Microsoft login result:', isLoggedIn);
           if (isLoggedIn) {
-            console.log('Redirecting to home page...');
             // Add a small delay to ensure MSAL state is properly set
             setTimeout(() => {
               this.router.navigate(['/home']); // Redirect to home page
               this.headerService.showHeaderAndSidenav = true;
             }, 100);
-          } else {
-            console.log('Microsoft login not successful, staying on login page');
           }
         },
         error: (error) => {
@@ -57,7 +52,6 @@ export class LoginComponent implements OnInit {
   // Microsoft Login
   onMicrosoftLogin(): void {
     this.loginError = null;
-    console.log('User clicked Microsoft login button');
     this.authService.loginWithMicrosoft();
   }
 }

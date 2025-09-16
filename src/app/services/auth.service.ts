@@ -98,28 +98,21 @@ export class AuthService {
 
   // Initialize Microsoft authentication state
   private initializeMicrosoftAuth(): void {
-    console.log('Initializing Microsoft authentication...');
     const account = this.msalService.instance.getActiveAccount();
     if (account) {
-      console.log('Found active Microsoft account:', account);
       this.msalService.instance.setActiveAccount(account);
     } else {
       // Check if there are any accounts available
       const accounts = this.msalService.instance.getAllAccounts();
-      console.log('All MSAL accounts:', accounts);
       if (accounts.length > 0) {
-        console.log('Setting first account as active:', accounts[0]);
         this.msalService.instance.setActiveAccount(accounts[0]);
         this.setMicrosoftUserDataFromAccount(accounts[0]);
-      } else {
-        console.log('No Microsoft accounts found');
       }
     }
   }
 
   // Microsoft Login
   loginWithMicrosoft(): void {
-    console.log('Initiating Microsoft login redirect...');
     this.msalService.loginRedirect({
       scopes: ['user.read']
     });
@@ -129,31 +122,24 @@ export class AuthService {
   // Handle Microsoft login redirect
   handleMicrosoftLogin(): Observable<boolean> {
     return new Observable(observer => {
-      console.log('Starting Microsoft login handling...');
       this.msalService.handleRedirectObservable().subscribe({
         next: (result: AuthenticationResult | null) => {
-          console.log('MSAL redirect result:', result);
           if (result) {
-            console.log('Microsoft login successful, setting user data...');
             this.setMicrosoftUserData(result);
             observer.next(true);
             observer.complete();
           } else {
-            console.log('No Microsoft login result, checking if already logged in...');
             // Check if user is already logged in
             const accounts = this.msalService.instance.getAllAccounts();
-            console.log('All MSAL accounts:', accounts);
             
             if (accounts.length > 0) {
               // Set the first account as active
               const account = accounts[0];
-              console.log('Setting account as active:', account);
               this.msalService.instance.setActiveAccount(account);
               this.setMicrosoftUserDataFromAccount(account);
               observer.next(true);
               observer.complete();
             } else {
-              console.log('No accounts found');
               observer.next(false);
               observer.complete();
             }
@@ -171,14 +157,11 @@ export class AuthService {
 
   // Set Microsoft user data
   private setMicrosoftUserData(result: AuthenticationResult): void {
-    console.log('Setting Microsoft user data...');
     const account = this.msalService.instance.getActiveAccount();
-    console.log('Active account:', account);
     
     if (account) {
       // Set the account as active
       this.msalService.instance.setActiveAccount(account);
-      console.log('Account set as active');
       
       this.userId = account.localAccountId;
       this.username = account.name || '';
@@ -216,17 +199,11 @@ export class AuthService {
       this.canAddUserSubject.next(this.canAddUser === 'true');
       this.inventoryRoleSubject.next(this.inventoryRole);
       this.memoryRoleSubject.next(this.memoryRole);
-      
-      console.log('Microsoft user data set successfully');
-    } else {
-      console.error('No active account found when setting user data');
     }
   }
 
   // Set Microsoft user data from account (without AuthenticationResult)
   private setMicrosoftUserDataFromAccount(account: any): void {
-    console.log('Setting Microsoft user data from account...');
-    
     if (account) {
       this.userId = account.localAccountId;
       this.username = account.name || '';
@@ -264,10 +241,6 @@ export class AuthService {
       this.canAddUserSubject.next(this.canAddUser === 'true');
       this.inventoryRoleSubject.next(this.inventoryRole);
       this.memoryRoleSubject.next(this.memoryRole);
-      
-      console.log('Microsoft user data set successfully from account');
-    } else {
-      console.error('No account provided when setting user data');
     }
   }
 
@@ -415,10 +388,6 @@ export class AuthService {
     
     // Check legacy authentication
     const isLegacyLoggedIn = !!this.authToken || !!localStorage.getItem('authToken');
-    
-    console.log('isLoggedIn check - MSAL account:', msalAccount);
-    console.log('isLoggedIn check - isMsalLoggedIn:', isMsalLoggedIn);
-    console.log('isLoggedIn check - isLegacyLoggedIn:', isLegacyLoggedIn);
     
     return isMsalLoggedIn || isLegacyLoggedIn;
   }
