@@ -11,13 +11,91 @@ POST /api/get-image/:projectId/:cameraId/
 ## Authentication
 🔒 **Authentication Required** - This endpoint requires a valid authentication token.
 
+### Getting Authentication Token
+
+Before using the Get Image API, you need to authenticate and obtain a token using the login endpoint.
+
+#### Login Endpoint
+```
+POST /api/auth/login
+```
+
+#### Login Request Body
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `email` | String | Yes | User email address |
+| `password` | String | Yes | User password |
+
+#### Login Example
+```bash
+curl -X POST https://ahcwatch.awjholding.com/backend/api/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "user@example.com",
+    "password": "your_password"
+  }'
+```
+
+#### Login Response
+```json
+{
+  "_id": "user_id",
+  "name": "User Name",
+  "email": "user@example.com",
+  "role": "admin",
+  "isActive": true,
+  "phone": "+1234567890",
+  "authh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+}
+```
+
+#### Using the Token
+After successful login, use the `authh` field from the response as your Bearer token:
+
+```bash
+curl -X POST https://ahcwatch.awjholding.com/backend/api/get-image/proj456/cam789/ \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
+  -d '{
+    "day1": "20231215",
+    "time1": "080000"
+  }'
+```
+
+#### Authentication Errors
+- **401 Unauthorized**: Invalid credentials or expired token
+- **403 Forbidden**: User account is inactive
+- **400 Bad Request**: Missing email or password, invalid email format
+
+#### Token Management
+- **Token Field**: The authentication token is returned in the `authh` field of the login response
+- **Token Usage**: Include the token in the `Authorization` header as `Bearer {token}`
+- **Token Expiry**: Tokens are JWT-based and may expire; re-login if you receive 401 errors
+- **Phone Verification**: If `phoneRequired: true` is returned, phone verification may be needed
+
 ## URL Parameters
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
-| `projectId` | String | Yes | The project ID |
-| `cameraId` | String | Yes | The camera ID |
+| `projectId` | String | Yes | The project ID (see available projects below) |
+| `cameraId` | String | Yes | The camera ID (see camera naming below) |
 
 **Note:** The developer ID is automatically set to `awj` and does not need to be specified in the URL.
+
+### Available Projects
+Currently available project codes:
+- **`rabwa`** - Rabwa project
+- **`abna`** - Abna project
+
+*Additional projects will be added in the future and their codes will be shared accordingly.*
+
+### Camera Naming Convention
+Each project contains multiple cameras with standardized naming:
+- **`camera1`** - First camera in the project
+- **`camera2`** - Second camera in the project
+- **`camera3`** - Third camera in the project (if available)
+- And so on...
+
+**Note:** Camera names always follow the pattern `camera{N}` where N is the camera number.
 
 ## Request Body
 
@@ -40,24 +118,49 @@ When `day2` and `time2` are not provided, the API automatically calculates the e
 - Start: `20231215` + `080000` → End: `20231215` + `090000`
 - Start: `20231215` + `233000` → End: `20231216` + `003000` (handles date rollover)
 
-## Request Examples
+## Complete Usage Examples
 
-### Example 1: Auto 1-Hour Range
+### Step 1: Login to Get Token
 ```bash
-curl -X POST http://localhost:5000/api/get-image/proj456/cam789/ \
+curl -X POST https://ahcwatch.awjholding.com/backend/api/auth/login \
   -H "Content-Type: application/json" \
-  -H "Authorization: Bearer YOUR_TOKEN" \
+  -d '{
+    "email": "user@example.com",
+    "password": "your_password"
+  }'
+```
+
+**Response:**
+```json
+{
+  "_id": "user_id",
+  "name": "User Name",
+  "email": "user@example.com",
+  "role": "admin",
+  "isActive": true,
+  "phone": "+1234567890",
+  "authh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+}
+```
+
+### Step 2: Use Token for API Calls
+
+#### Example 1: Auto 1-Hour Range (Rabwa Project, Camera 1)
+```bash
+curl -X POST https://ahcwatch.awjholding.com/backend/api/get-image/rabwa/camera1/ \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
   -d '{
     "day1": "20231215",
     "time1": "080000"
   }'
 ```
 
-### Example 2: Custom Date Range
+#### Example 2: Custom Date Range (Abna Project, Camera 2)
 ```bash
-curl -X POST http://localhost:5000/api/get-image/proj456/cam789/ \
+curl -X POST https://ahcwatch.awjholding.com/backend/api/get-image/abna/camera2/ \
   -H "Content-Type: application/json" \
-  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
   -d '{
     "day1": "20231215",
     "time1": "080000",
@@ -66,11 +169,11 @@ curl -X POST http://localhost:5000/api/get-image/proj456/cam789/ \
   }'
 ```
 
-### Example 3: Cross-Day Range
+#### Example 3: Cross-Day Range (Rabwa Project, Camera 1)
 ```bash
-curl -X POST http://localhost:5000/api/get-image/proj456/cam789/ \
+curl -X POST https://ahcwatch.awjholding.com/backend/api/get-image/rabwa/camera1/ \
   -H "Content-Type: application/json" \
-  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
   -d '{
     "day1": "20231215",
     "time1": "220000",
@@ -95,7 +198,7 @@ curl -X POST http://localhost:5000/api/get-image/proj456/cam789/ \
     "start": "20231215 08:00:00",
     "end": "20231215 09:00:00"
   },
-  "path": "http://localhost:5000/media/upload/awj/proj456/cam789/",
+  "path": "https://ahcwatch.awjholding.com/backend/media/upload/awj/rabwa/camera1/",
   "autoCalculated": true
 }
 ```
@@ -164,9 +267,9 @@ Images can be accessed using the `path` field from the response:
 ```
 
 **Example:**
-- Response path: `http://localhost:5000/media/upload/awj/proj456/cam789/`
+- Response path: `https://ahcwatch.awjholding.com/backend/media/upload/awj/rabwa/camera1/`
 - Image filename: `20231215080000`
-- Full URL: `http://localhost:5000/media/upload/awj/proj456/cam789/20231215080000.jpg`
+- Full URL: `https://ahcwatch.awjholding.com/backend/media/upload/awj/rabwa/camera1/20231215080000.jpg`
 
 ## File Naming Convention
 
@@ -188,49 +291,77 @@ Where:
 ## Use Cases
 
 ### 1. Quick Hourly Check
-Get all images from the last hour:
-```json
-{
-  "day1": "20231215",
-  "time1": "140000"
-}
+Get all images from the last hour from Rabwa project, Camera 1:
+```bash
+curl -X POST https://ahcwatch.awjholding.com/backend/api/get-image/rabwa/camera1/ \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -d '{
+    "day1": "20231215",
+    "time1": "140000"
+  }'
 ```
 
 ### 2. Business Hours Monitoring
-Get images during business hours:
-```json
-{
-  "day1": "20231215",
-  "time1": "080000",
-  "day2": "20231215",
-  "time2": "170000"
-}
+Get images during business hours from Abna project, Camera 2:
+```bash
+curl -X POST https://ahcwatch.awjholding.com/backend/api/get-image/abna/camera2/ \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -d '{
+    "day1": "20231215",
+    "time1": "080000",
+    "day2": "20231215",
+    "time2": "170000"
+  }'
 ```
 
 ### 3. Night Shift Monitoring
-Get images during night shift:
-```json
-{
-  "day1": "20231215",
-  "time1": "220000",
-  "day2": "20231216",
-  "time2": "060000"
-}
+Get images during night shift from Rabwa project, Camera 1:
+```bash
+curl -X POST https://ahcwatch.awjholding.com/backend/api/get-image/rabwa/camera1/ \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -d '{
+    "day1": "20231215",
+    "time1": "220000",
+    "day2": "20231216",
+    "time2": "060000"
+  }'
 ```
 
 ### 4. Specific Event Investigation
-Get images around a specific time:
-```json
-{
-  "day1": "20231215",
-  "time1": "143000",
-  "day2": "20231215",
-  "time2": "150000"
-}
+Get images around a specific time from Abna project, Camera 1:
+```bash
+curl -X POST https://ahcwatch.awjholding.com/backend/api/get-image/abna/camera1/ \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -d '{
+    "day1": "20231215",
+    "time1": "143000",
+    "day2": "20231215",
+    "time2": "150000"
+  }'
 ```
 
 ## Rate Limiting
 No specific rate limiting is implemented, but consider implementing client-side throttling for high-frequency requests.
+
+## Project and Camera Information
+
+### Current Availability
+- **Projects**: `rabwa`, `abna`
+- **Cameras per Project**: Each project has 2 cameras (`camera1`, `camera2`)
+- **Developer**: All projects are under developer `awj`
+
+### Future Updates
+- New projects will be added with their respective codes
+- Additional cameras may be added to existing projects
+- Project codes and camera names will be communicated when available
+
+### Valid Endpoint Examples
+```
+POST https://ahcwatch.awjholding.com/backend/api/get-image/rabwa/camera1/
+POST https://ahcwatch.awjholding.com/backend/api/get-image/rabwa/camera2/
+POST https://ahcwatch.awjholding.com/backend/api/get-image/abna/camera1/
+POST https://ahcwatch.awjholding.com/backend/api/get-image/abna/camera2/
+```
 
 ## Security Notes
 - All requests require valid authentication
@@ -247,8 +378,10 @@ No specific rate limiting is implemented, but consider implementing client-side 
    - Ensure proper authentication
 
 2. **Authentication errors**
-   - Verify the Authorization header is included
+   - Verify the Authorization header is included with `Bearer` prefix
    - Check if the token is valid and not expired
+   - Re-login if you receive 401 Unauthorized errors
+   - Ensure the token is from the `authh` field of the login response
 
 3. **Invalid date/time format**
    - Ensure dates are in YYYYMMDD format
