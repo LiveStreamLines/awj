@@ -4,7 +4,7 @@ const router = express.Router();
 const developerController = require('../controllers/developerController');
 const authMiddleware = require('../controllers/authMiddleware');
 
-router.use(authMiddleware);
+router.use(authMiddleware.authMiddleware);
 
 const multer = require('multer');
 const path = require('path');

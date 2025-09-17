@@ -5,7 +5,7 @@ const userController = require('../controllers/userController');
 
 const authMiddleware = require('../controllers/authMiddleware');
 
-router.use(authMiddleware);
+router.use(authMiddleware.authMiddleware);
 
 router.get('/', userController.getAllUsers);
 router.get('/:id', userController.getUserById);

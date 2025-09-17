@@ -3,7 +3,7 @@ const router = express.Router();
 const salesOrderController = require('../controllers/salesOrderController');
 const authMiddleware = require('../controllers/authMiddleware');
 // Apply authentication middleware to all routes
-router.use(authMiddleware);
+router.use(authMiddleware.authMiddleware);
 
 // Get all sales orders
 router.get('/', salesOrderController.getAllSalesOrders);

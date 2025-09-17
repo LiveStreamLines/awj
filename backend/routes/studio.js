@@ -4,7 +4,7 @@ const canvasController = require('../controllers/studioController');
 const authMiddleware = require('../controllers/authMiddleware');
 
 // Use authentication middleware if necessary
-router.use(authMiddleware);
+router.use(authMiddleware.authMiddleware);
 
 const multer = require('multer');
 const path = require('path');

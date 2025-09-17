@@ -4,7 +4,7 @@ const router = express.Router();
 const cameraController = require('../controllers/cameraController');
 const authMiddleware = require('../controllers/authMiddleware');
 
-router.use(authMiddleware);
+router.use(authMiddleware.authMiddleware);
 
 router.get('/', cameraController.getAllCameras);
 router.get('/pics/last', cameraController.getLastPicturesFromAllCameras);
