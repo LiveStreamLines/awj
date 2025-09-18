@@ -44,7 +44,7 @@
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, #d4af37 0%, #f4d03f 100%);
+  background: linear-gradient(90deg, #9e8d60 0%, #beb395 100%);
   border-radius: 16px 16px 0 0;
 }
 
@@ -62,7 +62,7 @@
 
 .play-icon {
   font-size: 60px;
-  color: #d4af37;
+  color: #9e8d60;
   opacity: 0.8;
   width: 60px;
   height: 60px;
@@ -71,7 +71,7 @@
 
 .card:hover .play-icon {
   transform: scale(1.1); /* Slightly enlarge icon on hover */
-  color: #b8941f; /* Darker golden color on hover */
+  color: #706444; /* Darker golden color on hover */
 }
 
 .card-body {
@@ -98,7 +98,7 @@
 .view-video {
   display: inline-block;
   padding: 12px 24px;
-  background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+  background: linear-gradient(135deg, #9e8d60 0%, #beb395 100%);
   color: #333;
   text-decoration: none;
   border-radius: 25px;
@@ -109,14 +109,14 @@
 }
 
 .view-video:hover {
-  background: linear-gradient(135deg, #b8941f 0%, #d4af37 100%);
+  background: linear-gradient(135deg, #706444 0%, #9e8d60 100%);
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
 }
 
 .not-ready {
   font-size: 0.9rem;
-  color: #d4af37;
+  color: #9e8d60;
   font-weight: 500;
 }
 
@@ -127,7 +127,7 @@
   align-items: center;
   justify-content: center;
   padding: 60px 20px;
-  color: #d4af37;
+  color: #9e8d60;
 }
 
 .loading-container p {
@@ -149,7 +149,7 @@
 
 .empty-icon {
   font-size: 4rem;
-  color: #d4af37;
+  color: #9e8d60;
   margin-bottom: 20px;
   opacity: 0.7;
 }

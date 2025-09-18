@@ -153,6 +153,17 @@ export class AuthService {
     });
   }
 
+  // Temporary login method for testing (bypasses Microsoft)
+  tempLogin(email: string, password: string): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/auth/login`, { email, password }).pipe(
+      tap((response) => {
+        if (response && !response.phoneRequired) {
+          this.setUserData(response);
+        }
+      })
+    );
+  }
+
   // Legacy methods removed - only Microsoft login is supported
 
   // Set Microsoft user data

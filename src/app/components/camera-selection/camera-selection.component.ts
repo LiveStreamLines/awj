@@ -34,8 +34,8 @@ import { MatIconModule } from '@angular/material/icon';
       display: flex;
       align-items: center;
       padding: 20px;
-      background: #1a1a1a;
-      border-bottom: 1px solid #333;
+      background: linear-gradient(135deg, #9e8d60 0%, #beb395 100%);
+      border-bottom: 1px solid #706444;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
@@ -49,7 +49,7 @@ import { MatIconModule } from '@angular/material/icon';
 
     .back-button {
       padding: 8px 16px;
-      background: rgb(141, 13, 13);
+      background: #706444;
       color: white;
       border: none;
       border-radius: 4px;
@@ -59,7 +59,7 @@ import { MatIconModule } from '@angular/material/icon';
     }
 
     .back-button:hover {
-      background: rgb(180, 17, 17);
+      background: #5d5339;
     }
     
     .camera-grid {
@@ -77,14 +77,16 @@ import { MatIconModule } from '@angular/material/icon';
       border-radius: 8px;
       overflow: hidden;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      background: #1a1a1a;
+      background: #ffffff;
+      border: 2px solid #dfd9ca;
       max-width: 400px;
       margin: 0 auto;
     }
     
     .camera-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      box-shadow: 0 5px 15px rgba(158, 141, 96, 0.3);
+      border-color: #9e8d60;
     }
 
     .camera-image-container {
@@ -110,7 +112,7 @@ import { MatIconModule } from '@angular/material/icon';
       left: 0;
       right: 0;
       bottom: 0;
-      background: rgba(0,0,0,0.5);
+      background: rgba(158, 141, 96, 0.7);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -129,17 +131,19 @@ import { MatIconModule } from '@angular/material/icon';
       padding: 8px 16px;
       border: 2px solid white;
       border-radius: 4px;
+      background: rgba(54, 48, 33, 0.8);
     }
 
     .camera-name {
       margin: 16px 16px 8px;
       font-size: 20px;
-      color: white;
+      color: #363021;
+      font-weight: 600;
     }
 
     .camera-description {
       margin: 0 16px 16px;
-      color: #cccccc;
+      color: #706444;
       font-size: 14px;
       line-height: 1.5;
     }

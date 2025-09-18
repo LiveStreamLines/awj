@@ -13,7 +13,7 @@
   padding: 20px 16px;
   text-align: center;
   border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-  background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+  background: linear-gradient(135deg, #9e8d60 0%, #beb395 100%);
   margin-bottom: 10px;
 }
 
@@ -52,12 +52,12 @@
 
 .nav-item:hover {
   background: rgba(212, 175, 55, 0.1) !important;
-  color: #d4af37 !important;
+  color: #9e8d60 !important;
   transform: translateX(4px);
 }
 
 .nav-item.active {
-  background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%) !important;
+  background: linear-gradient(135deg, #9e8d60 0%, #beb395 100%) !important;
   color: white !important;
   font-weight: 600;
   box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
@@ -86,7 +86,7 @@
 }
 
 .nav-item:hover mat-icon {
-  color: #d4af37;
+  color: #9e8d60;
 }
 
 /* Responsive adjustments */
@@ -144,7 +144,7 @@
 
 /* Focus states for accessibility */
 .nav-item:focus {
-  outline: 2px solid #d4af37;
+  outline: 2px solid #9e8d60;
   outline-offset: 2px;
 }
 

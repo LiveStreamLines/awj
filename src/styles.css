@@ -42,14 +42,14 @@ html, body {
     width: 800px !important;
   }
 
-  /* Global Tab Styling - Golden & White Theme */
+  /* Global Tab Styling - Earthy Brown & White Theme */
   .mat-mdc-tab-group {
     background: transparent !important;
   }
 
   .mat-mdc-tab-header {
     background: #ffffff !important;
-    border-bottom: 2px solid rgba(212, 175, 55, 0.2) !important;
+    border-bottom: 2px solid rgba(158, 141, 96, 0.2) !important;
     border-radius: 8px 8px 0 0 !important;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important;
   }
@@ -63,12 +63,12 @@ html, body {
   }
 
   .mat-mdc-tab:hover {
-    color: #d4af37 !important;
-    background-color: rgba(212, 175, 55, 0.05) !important;
+    color: #9e8d60 !important;
+    background-color: rgba(158, 141, 96, 0.05) !important;
   }
 
   .mat-mdc-tab.mdc-tab--active {
-    color: #d4af37 !important;
+    color: #9e8d60 !important;
     font-weight: 600 !important;
   }
 
@@ -105,21 +105,21 @@ html, body {
     --mdc-outlined-text-field-focus-outline-color: #710707;
     --mdc-outlined-text-field-focus-label-text-color: white;
     --mdc-outlined-text-field-focus-outline-coloor: red;
-    --mdc-tab-indicator-active-indicator-color: #d4af37;
+    --mdc-tab-indicator-active-indicator-color: #9e8d60;
     --mdc-tab-indicator-active-indicator-height: 3px;
     --mdc-tab-indicator-active-indicator-shape: 0;
-    --mat-tab-header-divider-color: rgba(212, 175, 55, 0.2);
+    --mat-tab-header-divider-color: rgba(158, 141, 96, 0.2);
     --mat-tab-header-pagination-icon-color: #666;
     --mat-tab-header-inactive-label-text-color: #666;
-    --mat-tab-header-active-label-text-color: #d4af37;
-    --mat-tab-header-active-ripple-color: rgba(212, 175, 55, 0.1);
-    --mat-tab-header-inactive-ripple-color: rgba(212, 175, 55, 0.05);
-    --mat-tab-header-inactive-focus-label-text-color: #d4af37;
-    --mat-tab-header-inactive-hover-label-text-color: #d4af37;
-    --mat-tab-header-active-focus-label-text-color: #d4af37;
-    --mat-tab-header-active-hover-label-text-color: #d4af37;
-    --mat-tab-header-active-focus-indicator-color: #d4af37;
-    --mat-tab-header-active-hover-indicator-color: #b8941f;
+    --mat-tab-header-active-label-text-color: #9e8d60;
+    --mat-tab-header-active-ripple-color: rgba(158, 141, 96, 0.1);
+    --mat-tab-header-inactive-ripple-color: rgba(158, 141, 96, 0.05);
+    --mat-tab-header-inactive-focus-label-text-color: #9e8d60;
+    --mat-tab-header-inactive-hover-label-text-color: #9e8d60;
+    --mat-tab-header-active-focus-label-text-color: #9e8d60;
+    --mat-tab-header-active-hover-label-text-color: #9e8d60;
+    --mat-tab-header-active-focus-indicator-color: #9e8d60;
+    --mat-tab-header-active-hover-indicator-color: #706444;
     --mat-tab-header-label-text-font: Roboto, sans-serif;
     --mat-tab-header-label-text-size: 0.875rem;
     --mat-tab-header-label-text-tracking: 0.006rem;

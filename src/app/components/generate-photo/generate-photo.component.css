@@ -33,7 +33,7 @@
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, #d4af37 0%, #f4d03f 100%);
+  background: linear-gradient(90deg, #9e8d60 0%, #beb395 100%);
   border-radius: 16px 16px 0 0;
 }
 
@@ -43,7 +43,8 @@
   color: #333;
   font-weight: 700;
   text-align: center;
-  background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+  padding: 10px;
+  background: linear-gradient(135deg, #9e8d60 0%, #beb395 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -80,7 +81,7 @@
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, #d4af37 0%, #f4d03f 100%);
+  background: linear-gradient(90deg, #9e8d60 0%, #beb395 100%);
   border-radius: 16px 16px 0 0;
 }
 
@@ -90,7 +91,7 @@
   font-weight: 700;
   margin-bottom: 20px;
   text-align: center;
-  background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+  background: linear-gradient(135deg, #9e8d60 0%, #beb395 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -111,7 +112,7 @@
 }
 
 .success-message button {
-  background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%) !important;
+  background: linear-gradient(135deg, #9e8d60 0%, #beb395 100%) !important;
   color: #333 !important;
   border: none !important;
   padding: 12px 24px !important;
@@ -125,7 +126,7 @@
 }
 
 .success-message button:hover {
-  background: linear-gradient(135deg, #b8941f 0%, #d4af37 100%) !important;
+  background: linear-gradient(135deg, #706444 0%, #9e8d60 100%) !important;
   transform: translateY(-2px) !important;
   box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4) !important;
 }
@@ -151,9 +152,9 @@
   left: 20px; /* Align with group padding */
   font-size: 0.8rem; /* Smaller font size */
   font-weight: 600;
-  color: #d4af37;
+  color: #9e8d60;
   padding: 8px 15px;
-  border: 2px solid #d4af37;
+  border: 2px solid #9e8d60;
   border-radius: 8px;
   background: #ffffff;
   display: inline-block;
@@ -199,7 +200,7 @@
   right: 1px;
   transform: translateY(-50%);
   pointer-events: none;
-  color: #d4af37;
+  color: #9e8d60;
   font-size: 19px;
   background: rgba(212, 175, 55, 0.1);
   padding: 6px;
@@ -220,12 +221,12 @@
 .form-field input:focus,
 .form-field select:focus {
   outline: none;
-  border-color: #d4af37;
+  border-color: #9e8d60;
   box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
 }
 
 button.submit {
-  background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+  background: linear-gradient(135deg, #9e8d60 0%, #beb395 100%);
   color: #333;
   padding: 15px 30px;
   border: none;
@@ -240,7 +241,7 @@ button.submit {
 }
 
 button.submit:hover {
-  background: linear-gradient(135deg, #b8941f 0%, #d4af37 100%);
+  background: linear-gradient(135deg, #706444 0%, #9e8d60 100%);
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
 }
@@ -263,7 +264,7 @@ button.submit:hover {
 
 .number-input-wrapper input[type="number"]:focus {
   outline: none;
-  border-color: #d4af37;
+  border-color: #9e8d60;
   box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
 }
 
@@ -280,7 +281,7 @@ button.submit:hover {
 }
 
 .arrow {
-  background-color: #d4af37;
+  background-color: #9e8d60;
   color: #333;
   border: none;
   width: 20px;
@@ -295,7 +296,7 @@ button.submit:hover {
 }
 
 .arrow:hover {
-  background-color: #b8941f;
+  background-color: #706444;
   transform: scale(1.1);
 }
 

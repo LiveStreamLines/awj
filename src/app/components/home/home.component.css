@@ -12,7 +12,7 @@
 
 /* Welcome Section */
 .welcome-section {
-  background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+  background: linear-gradient(135deg, #9e8d60 0%, #beb395 100%);
   padding: 40px 20px;
   text-align: center;
   box-shadow: 0 4px 20px rgba(212, 175, 55, 0.2);
@@ -74,7 +74,7 @@
   align-items: center;
   justify-content: center;
   padding: 60px 20px;
-  color: #d4af37;
+  color: #9e8d60;
 }
 
 .loading-container p {
@@ -114,7 +114,7 @@
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, #d4af37 0%, #f4d03f 100%);
+  background: linear-gradient(90deg, #9e8d60 0%, #beb395 100%);
 }
 
 .developer-card:hover {
@@ -181,7 +181,7 @@
 }
 
 .view-projects-btn {
-  background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%) !important;
+  background: linear-gradient(135deg, #9e8d60 0%, #beb395 100%) !important;
   color: #333 !important;
   border: none !important;
   border-radius: 25px !important;
@@ -198,7 +198,7 @@
 }
 
 .view-projects-btn:hover {
-  background: linear-gradient(135deg, #b8941f 0%, #d4af37 100%) !important;
+  background: linear-gradient(135deg, #706444 0%, #9e8d60 100%) !important;
   transform: translateY(-2px) !important;
   box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4) !important;
 }
@@ -218,7 +218,7 @@
 
 .no-results-icon {
   font-size: 4rem;
-  color: #d4af37;
+  color: #9e8d60;
   margin-bottom: 20px;
   opacity: 0.7;
 }

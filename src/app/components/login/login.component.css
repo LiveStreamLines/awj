@@ -67,7 +67,7 @@
 }
 
 .welcome-section h1 {
-  color: #d4af37;
+  color: #9e8d60;
   font-size: 2.2rem;
   font-weight: 600;
   margin: 0 0 15px 0;
@@ -89,8 +89,8 @@
 
 .temporary-login-btn {
   background: transparent !important;
-  color: #d4af37 !important;
-  border: 2px solid #d4af37 !important;
+  color: #9e8d60 !important;
+  border: 2px solid #9e8d60 !important;
   padding: 12px 24px !important;
   border-radius: 8px !important;
   font-size: 0.9rem !important;
@@ -108,13 +108,13 @@
 
 .temporary-login-btn:hover {
   background: rgba(212, 175, 55, 0.1) !important;
-  border-color: #b8941f !important;
-  color: #b8941f !important;
+  border-color: #706444 !important;
+  color: #706444 !important;
   transform: translateY(-1px) !important;
 }
 
 .microsoft-login-btn {
-  background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%) !important;
+  background: linear-gradient(135deg, #9e8d60 0%, #beb395 100%) !important;
   color: #333 !important;
   border: none !important;
   padding: 16px 32px !important;
@@ -135,7 +135,7 @@
 }
 
 .microsoft-login-btn:hover {
-  background: linear-gradient(135deg, #b8941f 0%, #d4af37 100%) !important;
+  background: linear-gradient(135deg, #706444 0%, #9e8d60 100%) !important;
   transform: translateY(-2px) !important;
   box-shadow: 0 12px 25px rgba(212, 175, 55, 0.4) !important;
   border-color: rgba(212, 175, 55, 0.5) !important;
@@ -170,7 +170,7 @@
 }
 
 .login-footer p {
-  color: #d4af37;
+  color: #9e8d60;
   font-size: 0.9rem;
   margin: 0;
   font-weight: 600;
@@ -289,6 +289,6 @@
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, #d4af37 0%, #f4d03f 50%, #d4af37 100%);
+  background: linear-gradient(90deg, #9e8d60 0%, #beb395 50%, #9e8d60 100%);
   border-radius: 20px 20px 0 0;
 }

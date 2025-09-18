@@ -17,7 +17,7 @@ A modern, beautiful, and highly customizable confirmation dialog component for A
 The component supports five different dialog types, each with its own visual styling:
 
 - **Question** (default): Blue theme with help icon
-- **Warning**: Yellow theme with warning icon
+- **Warning**: Earthy brown theme with warning icon
 - **Error**: Red theme with error icon
 - **Info**: Cyan theme with info icon
 - **Success**: Green theme with check circle icon

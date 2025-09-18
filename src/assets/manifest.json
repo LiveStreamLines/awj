@@ -5,7 +5,7 @@
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#d4af37",
+  "theme_color": "#9e8d60",
   "icons": [
     {
       "src": "awjlogo.png",

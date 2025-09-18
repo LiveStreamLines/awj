@@ -10,7 +10,7 @@ I've updated the HTML to use the AWJ logo as favicon with multiple formats for b
 2. **Web App Manifest**: Created `src/assets/manifest.json` for PWA support
 3. **Multiple Formats**: PNG favicons for modern browsers
 4. **Apple Touch Icon**: For iOS devices
-5. **Theme Colors**: Gold theme color (`#d4af37`) matching AWJ branding
+5. **Theme Colors**: Earthy brown theme color (`#9e8d60`) matching AWJ branding
 
 ## 🔧 Creating Proper Favicon Files
 
@@ -62,7 +62,7 @@ The HTML is already configured with:
 
 ### **AWJ Branding:**
 - ✅ **Logo**: AWJ logo as favicon
-- ✅ **Colors**: Gold theme color (`#d4af37`)
+- ✅ **Colors**: Earthy brown theme color (`#9e8d60`)
 - ✅ **Title**: "AHC Watch - AWJ Holding"
 - ✅ **PWA Ready**: Web app manifest included
 
@@ -79,7 +79,7 @@ If you want to use the existing AWJ logo immediately:
 The manifest.json is configured for:
 - **App Name**: "AHC Watch Platform"
 - **Short Name**: "AHC Watch"
-- **Theme Color**: AWJ Gold (`#d4af37`)
+- **Theme Color**: AWJ Earthy Brown (`#9e8d60`)
 - **Background**: White (`#ffffff`)
 - **Icons**: AWJ logo in multiple sizes
 

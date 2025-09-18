@@ -1,7 +1,7 @@
 /* Back button styling */
 
 .back-button {
-  background: linear-gradient(135deg, #FFD700, #FFA500);
+  background: linear-gradient(135deg, #9e8d60, #beb395);
   color: #2c2c2c;
   padding: 10px 20px;
   border: none;
@@ -15,7 +15,7 @@
 }
 
 .back-button:hover {
-  background: linear-gradient(135deg, #FFA500, #FFD700);
+  background: linear-gradient(135deg, #beb395, #9e8d60);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
 }
@@ -41,7 +41,7 @@
 }
 
 .camera-detail-toolbar button.active {
-  background: linear-gradient(135deg, #FFD700, #FFA500);
+  background: linear-gradient(135deg, #9e8d60, #beb395);
   color: #2c2c2c;
   box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
 }
@@ -165,7 +165,7 @@ mat-icon {
 }
 
 .thumbnail-strip::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #FFD700, #FFA500);  /* Gold gradient scrollbar */
+  background: linear-gradient(135deg, #9e8d60, #beb395);  /* Gold gradient scrollbar */
   border-radius: 10px;
 }
 
@@ -182,7 +182,7 @@ mat-icon {
   padding: 8px 16px; /* Add padding for better click area */
   font-size: 14px; /* Ensure consistent font size */
   text-transform: none; /* Prevent Material's default uppercase */
-  background: linear-gradient(135deg, #FFD700, #FFA500);
+  background: linear-gradient(135deg, #9e8d60, #beb395);
   color: #2c2c2c;
   margin-right: 10px;
   border-radius: 8px;
@@ -192,7 +192,7 @@ mat-icon {
 }
 
 .share-button:hover {
-  background: linear-gradient(135deg, #FFA500, #FFD700);
+  background: linear-gradient(135deg, #beb395, #9e8d60);
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
 }
@@ -220,7 +220,7 @@ mat-icon {
 }
 
 .thumbnail.selected {
-  border-color: #FFD700;  /* Gold highlight for selected thumbnail */
+  border-color: #9e8d60;  /* Gold highlight for selected thumbnail */
   box-shadow: 0 0 12px rgba(255, 215, 0, 0.5);
   transform: scale(1.05);
 }
@@ -302,13 +302,13 @@ p {
 
 /* Input hover effect */
 .native-date-picker:hover {
-  border-color: #FFD700; /* Gold border on hover */
+  border-color: #9e8d60; /* Gold border on hover */
   background-color: rgba(255, 255, 255, 1);
 }
 
 /* Input focus effect */
 .native-date-picker:focus {
-  border-color: #FFA500; /* Orange border for focus */
+  border-color: #beb395; /* Orange border for focus */
   box-shadow: 0 0 8px rgba(255, 215, 0, 0.4); /* Gold glow effect */
   outline: none; /* Remove default outline */
   background-color: rgba(255, 255, 255, 1);
@@ -337,7 +337,7 @@ p {
     pointer-events: none;
     color: #2c2c2c;
     font-size: 19px;
-    background: linear-gradient(135deg, #FFD700, #FFA500);
+    background: linear-gradient(135deg, #9e8d60, #beb395);
     padding: 6px;
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(255, 215, 0, 0.3);

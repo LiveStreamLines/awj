@@ -153,7 +153,7 @@ export class CameraFeedComponent implements OnInit, AfterViewInit, OnDestroy {
                 style="
                   margin-top: 15px; 
                   padding: 8px 16px; 
-                  background: #FFD700; 
+                  background: #9e8d60; 
                   color: #000; 
                   border: none; 
                   border-radius: 4px; 
@@ -172,7 +172,7 @@ export class CameraFeedComponent implements OnInit, AfterViewInit, OnDestroy {
           justify-content: center; 
           align-items: center; 
           height: 100%; 
-          color: #FFD700; 
+          color: #9e8d60; 
           text-align: center;
           padding: 20px;
           background: rgba(0, 0, 0, 0.8);
@@ -180,7 +180,7 @@ export class CameraFeedComponent implements OnInit, AfterViewInit, OnDestroy {
         ">
           <div style="font-size: 24px; margin-bottom: 10px;">⚠️</div>
           <div style="font-size: 14px; margin-bottom: 5px; color: #FFFFFF;">Camera Feed Error</div>
-          <div style="font-size: 12px; color: #FFD700; margin-bottom: 10px;">${message}</div>
+          <div style="font-size: 12px; color: #9e8d60; margin-bottom: 10px;">${message}</div>
           <div style="font-size: 10px; color: #CCCCCC;">Project: ${this.projectTag}</div>
           ${retryButton}
         </div>
@@ -207,7 +207,7 @@ export class CameraFeedComponent implements OnInit, AfterViewInit, OnDestroy {
           justify-content: center; 
           align-items: center; 
           height: 100%; 
-          color: #FFD700;
+          color: #9e8d60;
           background: rgba(0, 0, 0, 0.8);
           border-radius: 8px;
         ">

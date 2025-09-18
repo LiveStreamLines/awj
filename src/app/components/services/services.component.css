@@ -32,7 +32,7 @@
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, #d4af37 0%, #f4d03f 100%);
+  background: linear-gradient(90deg, #9e8d60 0%, #beb395 100%);
   border-radius: 16px 16px 0 0;
 }
 
@@ -60,7 +60,7 @@
 }
 
 .tile-button {
-  background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%) !important;
+  background: linear-gradient(135deg, #9e8d60 0%, #beb395 100%) !important;
   color: #333 !important;
   border: none !important;
   padding: 12px 24px !important;
@@ -76,7 +76,7 @@
 }
 
 .tile-button:hover {
-  background: linear-gradient(135deg, #b8941f 0%, #d4af37 100%) !important;
+  background: linear-gradient(135deg, #706444 0%, #9e8d60 100%) !important;
   transform: translateY(-2px) !important;
   box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4) !important;
 }
@@ -134,7 +134,7 @@
 
   
 .back-button {
-  background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+  background: linear-gradient(135deg, #9e8d60 0%, #beb395 100%);
   color: #333;
   padding: 12px 24px;
   border: none;
@@ -148,7 +148,7 @@
 }
 
 .back-button:hover {
-  background: linear-gradient(135deg, #b8941f 0%, #d4af37 100%);
+  background: linear-gradient(135deg, #706444 0%, #9e8d60 100%);
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
 }
