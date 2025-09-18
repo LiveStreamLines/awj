@@ -95,4 +95,5 @@ media/
 # iOS build files
 ios/App/App.xcworkspace/xcshareddata/
 ios/App/Pods/
+/backend/data/hikToken.json
 # /backend/data/

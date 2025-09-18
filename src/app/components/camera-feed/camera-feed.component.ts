@@ -153,12 +153,13 @@ export class CameraFeedComponent implements OnInit, AfterViewInit, OnDestroy {
                 style="
                   margin-top: 15px; 
                   padding: 8px 16px; 
-                  background: #4CAF50; 
-                  color: white; 
+                  background: #FFD700; 
+                  color: #000; 
                   border: none; 
                   border-radius: 4px; 
                   cursor: pointer;
                   font-size: 12px;
+                  font-weight: bold;
                 ">
           Retry
         </button>
@@ -171,14 +172,16 @@ export class CameraFeedComponent implements OnInit, AfterViewInit, OnDestroy {
           justify-content: center; 
           align-items: center; 
           height: 100%; 
-          color: #ff6b6b; 
+          color: #FFD700; 
           text-align: center;
           padding: 20px;
+          background: rgba(0, 0, 0, 0.8);
+          border-radius: 8px;
         ">
           <div style="font-size: 24px; margin-bottom: 10px;">⚠️</div>
-          <div style="font-size: 14px; margin-bottom: 5px;">Camera Feed Error</div>
-          <div style="font-size: 12px; color: #ccc; margin-bottom: 10px;">${message}</div>
-          <div style="font-size: 10px; color: #888;">Project: ${this.projectTag}</div>
+          <div style="font-size: 14px; margin-bottom: 5px; color: #FFFFFF;">Camera Feed Error</div>
+          <div style="font-size: 12px; color: #FFD700; margin-bottom: 10px;">${message}</div>
+          <div style="font-size: 10px; color: #CCCCCC;">Project: ${this.projectTag}</div>
           ${retryButton}
         </div>
       `;
@@ -204,11 +207,13 @@ export class CameraFeedComponent implements OnInit, AfterViewInit, OnDestroy {
           justify-content: center; 
           align-items: center; 
           height: 100%; 
-          color: #4CAF50;
+          color: #FFD700;
+          background: rgba(0, 0, 0, 0.8);
+          border-radius: 8px;
         ">
           <div style="font-size: 24px; margin-bottom: 10px;">📹</div>
-          <div style="font-size: 14px;">Loading Camera Feed...</div>
-          <div style="font-size: 10px; color: #888; margin-top: 5px;">Project: ${this.projectTag}</div>
+          <div style="font-size: 14px; color: #FFFFFF;">Loading Camera Feed...</div>
+          <div style="font-size: 10px; color: #CCCCCC; margin-top: 5px;">Project: ${this.projectTag}</div>
         </div>
       `;
     }
@@ -420,7 +425,12 @@ export class CameraFeedComponent implements OnInit, AfterViewInit, OnDestroy {
 
       // Check if JSPlugin is available
       if (!(window as any).JSPlugin) {
-        throw new Error("JSPlugin not loaded");
+        throw new Error("JSPlugin not loaded - please refresh the page");
+      }
+
+      // Validate required data before proceeding
+      if (!this.serialNumber || !this.secretKey || !this.streamToken) {
+        throw new Error("Missing required camera credentials");
       }
 
       this.oPlugin = new (window as any).JSPlugin({
@@ -434,6 +444,9 @@ export class CameraFeedComponent implements OnInit, AfterViewInit, OnDestroy {
           background: "#4C4B4B"
         }
       });
+
+      // Wait a bit for plugin to initialize
+      await new Promise(resolve => setTimeout(resolve, 500));
 
       await this.oPlugin.JS_ArrangeWindow(1, false);
       console.log("JS_ArrangeWindow success");
@@ -461,46 +474,39 @@ export class CameraFeedComponent implements OnInit, AfterViewInit, OnDestroy {
       console.log("LiveView initialized successfully");
       this.isInitialized = true;
 
-      // Add event listeners for plugin events
-      this.setupPluginEventListeners();
+      // Note: Event listeners setup removed due to plugin compatibility issues
+      // The plugin version may not support JS_AddEventListener method
       
     } catch (error: any) {
       console.error("Error initializing LiveView:", error);
-      this.showError(`Camera initialization failed: ${error?.message || 'Unknown error'}`);
+      
+      // Provide more specific error messages
+      let errorMessage = "Camera initialization failed";
+      if (error.message.includes("JSPlugin not loaded")) {
+        errorMessage = "Camera plugin failed to load. Please refresh the page.";
+      } else if (error.message.includes("Missing required")) {
+        errorMessage = "Camera credentials are missing or invalid.";
+      } else if (error.message.includes("SharedArrayBuffer")) {
+        errorMessage = "Browser compatibility issue. Please try a different browser or refresh.";
+      } else {
+        errorMessage = `Camera initialization failed: ${error?.message || 'Unknown error'}`;
+      }
+      
+      this.showError(errorMessage);
       
       if (this.retryCount < this.MAX_RETRIES) {
         this.retryCount++;
         console.log(`Retrying initialization (${this.retryCount}/${this.MAX_RETRIES})...`);
-        setTimeout(() => this.initializeLiveView(), 1000);
+        // Increase delay between retries
+        setTimeout(() => this.initializeLiveView(), 2000 * this.retryCount);
       } else {
         console.error("Max retries reached for initialization");
         this.retryCount = 0;
-        this.showError("Failed to initialize camera after multiple attempts");
+        this.showError("Failed to initialize camera after multiple attempts. Please check your connection and refresh the page.");
       }
     }
   }
 
-  private setupPluginEventListeners(): void {
-    if (this.oPlugin) {
-      try {
-        // Listen for play events
-        this.oPlugin.JS_AddEventListener("play", () => {
-          console.log("Camera feed started playing");
-        });
-
-        // Listen for error events
-        this.oPlugin.JS_AddEventListener("error", (error: any) => {
-          console.error("Camera plugin error:", error);
-          this.showError("Camera feed error occurred");
-        });
-
-        // Listen for stop events
-        this.oPlugin.JS_AddEventListener("stop", () => {
-          console.log("Camera feed stopped");
-        });
-      } catch (error) {
-        console.error("Error setting up plugin event listeners:", error);
-      }
-    }
-  }
+  // Event listeners setup removed due to plugin compatibility issues
+  // The JSPlugin version being used may not support JS_AddEventListener method
 }

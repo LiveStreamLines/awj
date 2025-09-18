@@ -29,7 +29,21 @@ const salesOrderRoutes = require('./routes/salesOrder');
 
 const app = express();
 
-app.use(cors());
+// Configure CORS with proper headers for SharedArrayBuffer support
+app.use(cors({
+  origin: true, // Allow all origins in development
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
+}));
+
+// Add headers for cross-origin isolation (required for SharedArrayBuffer)
+app.use((req, res, next) => {
+  res.header('Cross-Origin-Embedder-Policy', 'require-corp');
+  res.header('Cross-Origin-Opener-Policy', 'same-origin');
+  next();
+});
+
 app.use(bodyParser.json());
 
 // Increase payload size limit
