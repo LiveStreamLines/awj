@@ -1,7 +1,7 @@
 export const environment = {
   production: false,
   backend: 'https://ahcwatch.awjholding.com/backend',
-  proxy: 'http://localhost:3000',
+  proxy: 'https://lsl-platform.com/proxy',
   hik: 'http://localhost:3000',
   // Microsoft Azure AD Configuration
   msalConfig: {
