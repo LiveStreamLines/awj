@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
   backend: 'https://ahcwatch.awjholding.com/backend',
-  proxy: 'https://lsl-platform.com/proxy',
+  proxy: 'https://ahcwatch.awjholding.com/proxy',
   hik: 'https://ahcwatch.awjholding.com/backend',
   // Microsoft Azure AD Configuration
   msalConfig: {
