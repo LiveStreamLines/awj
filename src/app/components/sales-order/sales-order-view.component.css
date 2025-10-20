@@ -223,7 +223,7 @@
 
 .btn-secondary {
   background: #353a45 !important;
-  color: #e0e6ed !important;
+  color: #ffffff !important;
   border: 1px solid #4a4f5a !important;
   padding: 10px 20px !important;
   border-radius: 8px !important;
@@ -238,7 +238,7 @@
 
 .btn-primary {
   background: linear-gradient(135deg, #d32f2f, #b71c1c) !important;
-  color: white !important;
+  color: #ffffff !important;
   padding: 12px 24px !important;
   border-radius: 8px !important;
   font-weight: 600 !important;
@@ -253,7 +253,7 @@
 
 .btn-invoice {
   background: linear-gradient(135deg, #ff9800, #f57c00) !important;
-  color: #000 !important;
+  color: #ffffff !important;
   padding: 12px 24px !important;
   border-radius: 8px !important;
   font-weight: 600 !important;
@@ -268,7 +268,7 @@
 
 .btn-invoice-blue {
   background: linear-gradient(135deg, #2196f3, #1976d2) !important;
-  color: #fff !important;
+  color: #ffffff !important;
   padding: 12px 24px !important;
   border-radius: 8px !important;
   font-weight: 600 !important;

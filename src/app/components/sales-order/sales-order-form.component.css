@@ -281,7 +281,7 @@
 
 .btn-primary {
   background: linear-gradient(135deg, #d32f2f, #b71c1c);
-  color: white;
+  color: #ffffff;
   border: 1px solid #d32f2f;
 }
 
@@ -301,7 +301,7 @@
 
 .btn-secondary {
   background: #353a45;
-  color: #e0e6ed;
+  color: #ffffff;
   border: 1px solid #353a45;
 }
 
@@ -313,7 +313,7 @@
 
 .btn-danger {
   background: linear-gradient(135deg, #c62828, #b71c1c);
-  color: white;
+  color: #ffffff;
   border: 1px solid #c62828;
 }
 

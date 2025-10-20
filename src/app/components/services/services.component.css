@@ -61,7 +61,7 @@
 
 .tile-button {
   background: linear-gradient(135deg, #9e8d60 0%, #beb395 100%) !important;
-  color: #333 !important;
+  color: #ffffff !important;
   border: none !important;
   padding: 12px 24px !important;
   border-radius: 25px !important;
@@ -135,7 +135,7 @@
   
 .back-button {
   background: linear-gradient(135deg, #9e8d60 0%, #beb395 100%);
-  color: #333;
+  color: #ffffff;
   padding: 12px 24px;
   border: none;
   border-radius: 25px;

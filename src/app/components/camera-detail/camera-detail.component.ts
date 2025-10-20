@@ -24,7 +24,6 @@ import { Project } from '../../models/project.model';
 import { Developer } from '../../models/developer.model';
 import { BreadcrumbService } from '../../services/breadcrumb.service';
 import { environment } from '../../../environment/environments';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 
 
@@ -72,8 +71,8 @@ export class CameraDetailComponent implements OnInit {
   selectedThumbnail: string = '';  // Add state for selected thumbnail
   selectedDate: string = ''; // This will be bound to ngModel
   mode: string = 'single';  // Default view mode
-  compareView: 'sideBySide' | 'slider' | 'magnify' = 'sideBySide';
   zoomView: 'lens' | 'pan' = 'lens';
+  compareView: 'sideBySide' | 'slider' | 'magnify' = 'sideBySide';
   showDateTime: boolean = true;
   showWeather: boolean = true;
   weatherString: string = '';
@@ -83,7 +82,6 @@ export class CameraDetailComponent implements OnInit {
   currentPhotoUrl: string = '';
   photoUrl: string ='';
 
-  isSmallScreen: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -93,15 +91,10 @@ export class CameraDetailComponent implements OnInit {
     private cameraDetailService: CameraDetailService,
     private weatherService: WeatherService,
     private breadcrumbService: BreadcrumbService,
-    private breakpointObserver: BreakpointObserver
   ) {}
 
   ngOnInit(): void {
 
-    this.breakpointObserver.observe([Breakpoints.Handset, Breakpoints.Tablet])
-    .subscribe(result => {
-      this.isSmallScreen = result.matches; // True for small screens
-    });
 
     this.cameraName = this.route.snapshot.params['cameraName'];
     this.developerTag = this.route.snapshot.paramMap.get('developerTag')!;
@@ -231,14 +224,16 @@ export class CameraDetailComponent implements OnInit {
     console.log(`Mode set to: ${mode}`);
   }
 
-  setCompareView(view: 'sideBySide' | 'slider' | 'magnify') {
-    this.compareView = view;
-  }
-
   setZoomView(view: 'lens' | 'pan' ) {
     this.zoomView = view;
     console.log(`Show zoom mode: ${this.zoomView}`);
   }
+
+  setCompareView(view: 'sideBySide' | 'slider' | 'magnify') {
+    this.compareView = view;
+  }
+
+
   
   generateVideo(): void {
     console.log('Generating video...');

@@ -4,12 +4,13 @@
   }
   
   .thumbnail-strip::-webkit-scrollbar-thumb {
-    background-color: #681111;  /* Customize the scrollbar color */
+    background: linear-gradient(135deg, #9e8d60, #beb395);  /* Theme gold gradient */
     border-radius: 10px;
   }
   
   .thumbnail-strip::-webkit-scrollbar-track {
-    background-color: #f1f1f1;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
   }
   
   .thumbnail-strip {
@@ -26,7 +27,9 @@
   }
   
   .thumbnail.selected {
-    border-color: #007bff; /* Highlight selected thumbnail */
+    border-color: #9e8d60; /* Theme gold highlight for selected thumbnail */
+    box-shadow: 0 0 12px rgba(255, 215, 0, 0.5);
+    transform: scale(1.05);
   }
   
   /* Smaller size for thumbnails */
@@ -44,13 +47,15 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    padding: 2px;
-    background-color: rgba(0, 0, 0, 0.7);
-    color: white;
-    font-size: 8px;
+    padding: 4px;
+    background: linear-gradient(135deg, #9e8d60, #beb395); /* Theme gold gradient */
+    color: #ffffff; /* White text for better contrast */
+    font-size: 10px;
+    font-weight: 600;
     text-align: center;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+    box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
   }
   
   /* Date selector styling */
@@ -84,32 +89,34 @@
   .form-field label {
     font-size: 14px;
     font-weight: bold;
-    color: #fcfcfc; /* Dark gray for text */
+    color: #2c2c2c; /* Theme consistent text color */
   }
   
   /* Style for the date input */
   .native-date-picker {
     width: 30%;
-    padding: 8px 8px;
+    padding: 8px 12px;
     font-size: 14px;
-    /* border: 1px solid #ccc; Light gray border */
-    border-radius: 4px;
-    background-color: #433a3a; /* Subtle background color */
-    color: #fffefe; /* Text color */
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #2c2c2c; /* Theme consistent text color */
     transition: all 0.3s ease; /* Smooth transitions for hover/focus */
-    border-bottom: 1px;
+    backdrop-filter: blur(5px);
   }
   
   /* Input hover effect */
   .native-date-picker:hover {
-    border-color: #a80e0e; /* Highlight border on hover */
+    border-color: #9e8d60; /* Theme gold border on hover */
+    background-color: rgba(255, 255, 255, 1);
   }
   
   /* Input focus effect */
   .native-date-picker:focus {
-    border-color: #871010; /* Blue border for focus */
-    box-shadow: 0 0 5px rgba(255, 38, 0, 0.788); /* Glow effect */
+    border-color: #beb395; /* Theme gold border for focus */
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.4); /* Theme gold glow effect */
     outline: none; /* Remove default outline */
+    background-color: rgba(255, 255, 255, 1);
   }
   
   /* Style for invalid input (optional, if validation is needed) */
@@ -133,10 +140,12 @@
     left: 27%;
     transform: translateY(-50%);
     pointer-events: none;
-    color: #eeeeee;
+    color: #2c2c2c;
     font-size: 19px;
-    background: #7f1515;
+    background: linear-gradient(135deg, #9e8d60, #beb395);
     padding: 6px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(255, 215, 0, 0.3);
   }
   
   .material-icons {

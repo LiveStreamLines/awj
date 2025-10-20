@@ -88,7 +88,7 @@
 .cameras-container {
   margin-top: 15px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Flexible column layout */
+  grid-template-columns: repeat(3, 1fr); /* Always 3 columns */
   gap: 30px;
   justify-content: center; /* Center items */
 }
@@ -171,7 +171,7 @@
 
 .cameras-card mat-card-actions button {
   background: linear-gradient(135deg, #9e8d60 0%, #beb395 100%) !important;
-  color: #333 !important;
+  color: #ffffff !important;
   border: none !important;
   border-radius: 25px !important;
   padding: 12px 24px !important;
@@ -221,7 +221,7 @@
 
 .back-button {
   background: linear-gradient(135deg, #9e8d60 0%, #beb395 100%);
-  color: #333;
+  color: #ffffff;
   padding: 12px 24px;
   border: none;
   border-radius: 25px;
@@ -242,7 +242,7 @@
 /* For tablets */
 @media (max-width: 768px) {
   .cameras-container {
-    grid-template-columns: 1fr 1fr; /* Two columns on medium screens */
+    grid-template-columns: repeat(3, 1fr); /* Keep 3 columns on tablets */
     gap: 20px;
   }
 
@@ -254,8 +254,8 @@
 /* For mobile screens */
 @media (max-width: 480px) {
   .cameras-container {
-    grid-template-columns: 1fr; /* Single column on small screens */
-    gap: 20px;
+    grid-template-columns: repeat(3, 1fr); /* Keep 3 columns on mobile screens */
+    gap: 15px;
   }
 
   .cameras-card mat-card-title {

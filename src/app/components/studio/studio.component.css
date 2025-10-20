@@ -46,8 +46,8 @@
   }
 
   .text-controls .remove-button {
-    background-color: red;
-    color: white;
+    background: linear-gradient(135deg, #9e8d60, #beb395);
+    color: #ffffff;
     border: none;
     border-radius: 50%;
     width: 40px;
@@ -85,8 +85,8 @@
 }
 
 .action-button {
-  background-color: red;
-  color: white;
+  background: linear-gradient(135deg, #9e8d60, #beb395);
+  color: #ffffff;
   border: none;
   border-radius: 50%;
   width: 40px;
@@ -95,23 +95,27 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
 }
 
 .action-button:hover {
-  background-color: darkred;
+  background: linear-gradient(135deg, #706444, #9e8d60);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
 }
 
 .delete-button {
-  background-color: red;
+  background: linear-gradient(135deg, #9e8d60, #beb395);
 }
 
 .move-button {
-  background-color: blue;
+  background: linear-gradient(135deg, #2196f3, #1976d2);
 }
 
 .move-button.active {
-  background-color: green; /* Indicate active state for move */
+  background: linear-gradient(135deg, #4caf50, #2e7d32); /* Green gradient for active state */
+  transform: scale(1.1);
 }
 
 .effects-panel {
@@ -136,7 +140,7 @@
 
 .watermark-button, .download-button {
   background-color: #4caf50;
-  color: white;
+  color: #ffffff;
   border: none;
   border-radius: 4px;
   padding: 8px 12px;
@@ -160,8 +164,8 @@
 }
 
 .toolbar button {
-  background-color: rgb(96, 15, 15);
-  color: white;
+  background: linear-gradient(135deg, #9e8d60, #beb395);
+  color: #ffffff;
   font-size: 14px; /* Smaller font size */
   padding: 8px 10px; /* Adjust padding for smaller buttons */
   border: none;
@@ -173,7 +177,8 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
 }
 
 .toolbar button span {
@@ -191,13 +196,15 @@
 }
 
 .toolbar button:hover {
-  background-color: darkred; /* Add hover effect */
+  background: linear-gradient(135deg, #706444, #9e8d60); /* Theme hover effect */
+  transform: translateY(-2px);
 }
 
 .toolbar button.active {
-  background-color: darkred; /* Highlight active button */
-  color: white;
-  border: 2px solid white; /* Optional border for active state */
+  background: linear-gradient(135deg, #9e8d60, #beb395); /* Theme active state */
+  color: #ffffff;
+  border: 2px solid #ffffff; /* Optional border for active state */
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
 }
 
 .canvas-actions {
@@ -206,7 +213,7 @@
 
 .download-button {
   background-color: darkgreen; /* Custom color for the download button */
-  color: white;
+  color: #ffffff;
   border-radius: 5px;
   padding: 8px 12px;
   font-size: 14px;

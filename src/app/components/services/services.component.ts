@@ -74,26 +74,17 @@ export class ServicesComponent implements OnInit {
 
   private updateFilteredServices() {
     if (this.userRole === 'Super Admin' || this.accessibleServices[0] === 'all') {
-      if (this.isMobile) {
-        // In mobile view, only show Timelapse and Live Streaming (if project is in allowedTags)
-        this.filteredServices = this.services.filter(service => 
-          service.name === 'Time lapse' || 
-          (service.name === 'Live Streaming' && this.allowedTags.includes(this.projectTag))
-        );
-      } else {
-        // In desktop view, show all services
-        this.filteredServices = this.services;
-      }
+      // Always show only Timelapse and Live Streaming
+      this.filteredServices = this.services.filter(service => 
+        service.name === 'Time lapse' || 
+        (service.name === 'Live Streaming' && this.allowedTags.includes(this.projectTag))
+      );
     } else {
-      // For non-admin users, filter based on accessible services
+      // For non-admin users, filter based on accessible services but only show Timelapse and Live Streaming
       this.filteredServices = this.services.filter((service) => {
-        if (this.isMobile) {
-          // In mobile view, only show Timelapse and Live Streaming (if project is in allowedTags)
-          return (service.name === 'Time lapse' || 
-                 (service.name === 'Live Streaming' && this.allowedTags.includes(this.projectTag))) &&
-                 this.accessibleServices.includes(service.name);
-        }
-        return this.accessibleServices.includes(service.name);
+        return (service.name === 'Time lapse' || 
+               (service.name === 'Live Streaming' && this.allowedTags.includes(this.projectTag))) &&
+               this.accessibleServices.includes(service.name);
       });
     }
   }

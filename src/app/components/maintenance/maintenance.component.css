@@ -272,7 +272,7 @@ table {
 
 .btn-primary {
   background-color: #007bff;
-  color: white;
+  color: #ffffff;
 }
 
 .btn-primary:hover {
@@ -282,7 +282,7 @@ table {
 .btn-outline {
   background-color: transparent;
   border: 1px solid #404040;
-  color: #e0e0e0;
+  color: #ffffff;
 }
 
 .btn-outline:hover {
@@ -293,7 +293,7 @@ table {
 
 .btn-danger {
   background-color: #dc3545;
-  color: white;
+  color: #ffffff;
 }
 
 .btn-danger:hover {
@@ -320,7 +320,7 @@ table {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   z-index: 1000;
   background-color: #007bff;
-  color: white;
+  color: #ffffff;
 }
 
 .add-button:hover {

@@ -14,7 +14,7 @@
 .welcome-section {
   background: linear-gradient(135deg, #9e8d60 0%, #beb395 100%);
   padding: 40px 20px;
-  text-align: center;
+  text-align: left;
   box-shadow: 0 4px 20px rgba(212, 175, 55, 0.2);
   position: relative;
   overflow: hidden;
@@ -41,18 +41,19 @@
 }
 
 .welcome-text h1 {
-  color: #333;
+  color: #ffffff;
   font-size: 2.5rem;
   font-weight: 700;
   margin: 0 0 10px 0;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .welcome-text p {
-  color: #555;
+  color: #ffffff;
   font-size: 1.2rem;
   margin: 0 0 30px 0;
   font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -182,7 +183,7 @@
 
 .view-projects-btn {
   background: linear-gradient(135deg, #9e8d60 0%, #beb395 100%) !important;
-  color: #333 !important;
+  color: #ffffff !important;
   border: none !important;
   border-radius: 25px !important;
   padding: 12px 24px !important;
