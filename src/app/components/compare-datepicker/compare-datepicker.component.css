@@ -1,4 +1,10 @@
 
+/* Main container to prevent vertical scroll */
+.compare-datepicker-container {
+  overflow-y: hidden;
+  max-height: 200px;
+}
+
 .thumbnail-strip::-webkit-scrollbar {
     height: 8px;
   }
@@ -17,6 +23,8 @@
     display: flex;
     gap: 10px;
     overflow-x: auto;
+    overflow-y: hidden;
+    max-height: 120px;
   }
   
   .thumbnail {
@@ -47,7 +55,7 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    padding: 4px;
+    padding: 4px 0px;
     background: linear-gradient(135deg, #9e8d60, #beb395); /* Theme gold gradient */
     color: #ffffff; /* White text for better contrast */
     font-size: 10px;

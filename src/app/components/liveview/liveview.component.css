@@ -35,13 +35,15 @@
     flex-direction: column;
     align-items: center;
     padding: 15px;
-    background: #1a1a1a;
-    border-radius: 8px;
+    background: linear-gradient(135deg, #2c2c2c, #1a1a1a);
+    border-radius: 12px;
     text-align: center;
     min-width: 200px;
     max-width: 250px;
     color: white;
     box-sizing: border-box;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 215, 0, 0.2);
 }
   
 .ptz-control h4 {
@@ -63,21 +65,24 @@
     height: 40px;
     border: none;
     border-radius: 50%;
-    background: #333;
+    background: linear-gradient(135deg, #9e8d60, #beb395);
     color: white;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px rgba(255, 215, 0, 0.3);
     cursor: pointer;
     font-size: 16px;
-    transition: all 0.2s;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.1);
 }
   
 .ptz-btn:hover {
-    background: #444;
+    background: linear-gradient(135deg, #706444, #9e8d60);
     transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(255, 215, 0, 0.5);
 }
 
 .ptz-btn:active {
-    background: #555;
+    background: linear-gradient(135deg, #5a4a30, #706444);
+    transform: scale(0.95);
 }
   
 .ptz-up {
@@ -108,7 +113,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: #444;
+    background: linear-gradient(135deg, #beb395, #9e8d60);
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
 }
 
 .zoom-control {
@@ -119,24 +125,27 @@
 }
   
 .zoom-in, .zoom-out {
-    padding: 6px 12px;
+    padding: 8px 16px;
     border: none;
-    border-radius: 4px;
-    background: #333;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #9e8d60, #beb395);
     color: white;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px rgba(255, 215, 0, 0.3);
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.3s ease;
     font-size: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
   
 .zoom-in:hover, .zoom-out:hover {
-    background: #444;
+    background: linear-gradient(135deg, #706444, #9e8d60);
     transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(255, 215, 0, 0.5);
 }
 
 .zoom-in:active, .zoom-out:active {
-    background: #555;
+    background: linear-gradient(135deg, #5a4a30, #706444);
+    transform: scale(0.95);
 }
   
 .ptz-btn[disabled] {
@@ -221,9 +230,9 @@
     display: flex;
     align-items: center;
     padding: 20px;
-    background: #1a1a1a;
-    border-bottom: 1px solid #333;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background: linear-gradient(135deg, #2c2c2c, #1a1a1a);
+    border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     box-sizing: border-box;
     width: 100%;
 }
@@ -237,18 +246,23 @@
 }
 
 .back-button {
-    padding: 8px 16px;
-    background: rgb(141, 13, 13);
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #9e8d60, #beb395);
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
     font-size: 14px;
-    transition: background-color 0.2s;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(255, 215, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .back-button:hover {
-    background: rgb(180, 17, 17);
+    background: linear-gradient(135deg, #706444, #9e8d60);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(255, 215, 0, 0.5);
 }
   
   

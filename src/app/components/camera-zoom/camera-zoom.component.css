@@ -51,11 +51,12 @@
   #zoom-scale-slider {
     flex-grow: 1;
     height: 6px;
-    background: #7a0a0a;
+    background: linear-gradient(135deg, #9e8d60, #beb395);
     outline: none;
     border-radius: 5px;
     cursor: pointer;
-    accent-color: darkred;
+    accent-color: #9e8d60;
+    box-shadow: 0 2px 4px rgba(255, 215, 0, 0.3);
   }
   
 

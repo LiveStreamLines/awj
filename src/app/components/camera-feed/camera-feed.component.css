@@ -9,6 +9,12 @@
   background-color: #1a1a1a;
   position: relative;
   overflow: hidden;
+  /* Prevent double-click fullscreen */
+  pointer-events: none;
+}
+
+.playContainer * {
+  pointer-events: auto;
 }
 
 #playWind {
